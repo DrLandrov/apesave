@@ -1,0 +1,12 @@
+SCRUMDAILY
+
+5 oct
+
+Alex ====
+
+Did the database V1.
+Working on relationship,
+Keys,
+register page,
+Logging page,
+API.
