@@ -10,3 +10,12 @@ Keys,
 register page,
 Logging page,
 API.
+==========================
+Roshan
+-Did the database V1.
+-Working on relationship,
+-Keys,
+-designed layout of user interface
+
+
+
