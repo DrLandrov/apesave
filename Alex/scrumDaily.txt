@@ -26,5 +26,13 @@ MADE
 - user page
 -json
 - still have to css and add JS
+==========================
+Roshan
+7 Oct
+TODO
+-make shop page
+-make add product page
+-link pages with database
+-add js and api
 
 
