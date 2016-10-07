@@ -1,6 +1,6 @@
 {% extends "master.html.twig" %}
 
-{% block title %}e-shop{% endblock %}
+{% block title %}APE SAVE{% endblock %}
 
 {% block content %}
     
@@ -10,7 +10,7 @@
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         You may <a href="/logout">logout</a>.</p>
 {% else %}
-<p><a href="/login">BUY/SELL</a> or <a href="/register">REGISTER</a> or <a href="/postad">SELL</a></p>
+<p><a href="/login">BUY/SELL</a> or <a href="/register">REGISTER</a> or <a href="/sell">SELL</a></p>
 {% endif %}
 
 {% endblock %}

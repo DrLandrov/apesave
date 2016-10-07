@@ -1,6 +1,6 @@
 {% extends "master.html.twig" %}
 
-{% block head %}<h1>Post ad</h1>{% endblock %}
+{% block head %}<h1>Sell Item</h1>{% endblock %}
 
 {% block content %}
 {% if errorList %}
@@ -19,10 +19,7 @@
     Contact Email: <input type="email" name="contactEmail" value="{{v.contactEmail}}"><br>
     <input type="submit" value="Post ad">
 </form>
-
-{% endblock %}
-
-$app->post('/postad(/:id)', function($id = '') use ($app) {
+<!--$app->post('/postad(/:id)', function($id = '') use ($app) {
     $Description = $app->request->post('msg');
     $price = $app->request->post('price');
     $contactEmail = $app->request->post('contactEmail');
@@ -98,4 +95,7 @@ $app->get('/postad(/:id)', function($id = '') use ($app) {
     } else {
         $app->render("postad.html.twig", array("v" => $ad));
     }
-});
+});-->
+
+{% endblock %}
+

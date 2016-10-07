@@ -28,7 +28,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        echo "e-shop";
+        echo "APE SAVE";
     }
 
     // line 5
@@ -51,7 +51,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
 ";
         } else {
             // line 13
-            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/postad\">SELL</a></p>
+            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
 ";
         }
         // line 15
@@ -78,7 +78,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
     {
         return "{% extends \"master.html.twig\" %}
 
-{% block title %}e-shop{% endblock %}
+{% block title %}APE SAVE{% endblock %}
 
 {% block content %}
     
@@ -88,7 +88,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         You may <a href=\"/logout\">logout</a>.</p>
 {% else %}
-<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/postad\">SELL</a></p>
+<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
 {% endif %}
 
 {% endblock %}
