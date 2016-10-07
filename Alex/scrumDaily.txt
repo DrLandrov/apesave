@@ -11,11 +11,20 @@ register page,
 Logging page,
 API.
 ==========================
-Roshan
+Roshan 
+5 Oct
 -Did the database V1.
 -Working on relationship,
 -Keys,
 -designed layout of user interface
-
+==========================
+Roshan 
+6 Oct
+MADE
+-login page
+- main page
+- user page
+-json
+- still have to css and add JS
 
 
