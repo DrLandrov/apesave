@@ -1,0 +1,16 @@
+{% extends "master.html.twig" %}
+
+{% block title %}e-shop{% endblock %}
+
+{% block content %}
+    
+<h1>Welcome to Ape Save</h1>
+
+{% if sessionUser %}
+    <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
+        You may <a href="/logout">logout</a>.</p>
+{% else %}
+<p><a href="/login">BUY/SELL</a> or <a href="/register">BROWSE</a></p>
+{% endif %}
+
+{% endblock %}

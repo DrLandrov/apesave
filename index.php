@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+// enable on-demand class loader
 require_once 'vendor/autoload.php';
 
 use Monolog\Logger;
@@ -10,20 +13,18 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
-DB::$dbName = 'todorest';
-DB::$user = 'todorest';
-DB::$password = 'rABaD56nBADjmrCb';
+DB::$dbName = 'slimshop';
+DB::$user = 'slimshop';
+DB::$password = 'y8L2NY6NJNF9HzPB';
+// DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
-
-// FIXME: add monolog
 
 function nonsql_error_handler($params) {
     global $app, $log;
     $log->error("Database error: " . $params['error']);
     http_response_code(500);
-    header('content-type: application/json');
-    echo json_encode("Internal server error");
+    $app->render('error_internal.html.twig');
     die;
 }
 
@@ -32,116 +33,121 @@ function sql_error_handler($params) {
     $log->error("SQL error: " . $params['error']);
     $log->error(" in query: " . $params['query']);
     http_response_code(500);
-    header('content-type: application/json');
-    echo json_encode("Internal server error");
+    $app->render('error_internal.html.twig');
     die; // don't want to keep going if a query broke
 }
 
-$app = new \Slim\Slim();
+// instantiate Slim - router in front controller (this file)
+// Slim creation and setup
+$app = new \Slim\Slim(array(
+    'view' => new \Slim\Views\Twig()
+        ));
 
+$view = $app->view();
+$view->parserOptions = array(
+    'debug' => true,
+    'cache' => dirname(__FILE__) . '/cache'
+);
+$view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
+
+/*
 \Slim\Route::setDefaultConditions(array(
-    'ID' => '\d+'
-));
+    'id' => '\d+'
+)); */
 
-$app->response->headers->set('content-type', 'application/json');
-
-function isTodoItemValid($todo, &$error, $skipID = FALSE) {
-    /* TODO: validate the following:
-     * 1. All fields ID, title, dueDate, isDone are present and none other
-     * 2. ID is valid numercial value 1 or graeter
-     * 3. title is 1-100 characters long
-     * 4. dueDate is a valid date between 2000-01-01 and 2099-01-01
-     * 5. isDone is either 'true' or 'false'
-     * In case of failed validation requirement $log->debug() the reason.
-     */
-    if (count($todo) != ($skipID ? 3 : 4)) {
-        $error = 'Invalid number of fields in data provided';
-        return FALSE;
-    }
-    if (!$skipID) {
-        if ((!isset($todo['ID']) || (!is_numeric($todo['ID'])))) {
-            $error = 'ID must be provided and must be a number';
-            return FALSE;
-        }
-    }
-    if (!isset($todo['title']) || !isset($todo['dueDate']) || !isset($todo['isDone'])) {
-        $error = 'The passed fields do not correspond to the expected list';
-        return FALSE;
-    }
-    if (strlen($todo['title']) < 1 || strlen($todo['title']) > 100) {
-        $error = 'Title is not valid';
-        return FALSE;
-    }
-    if (!in_array($todo['isDone'], array('true', 'false'))) {
-        $error = 'isDone is not true nor false';
-        return FALSE;
-    }
-    $f = 'Y-m-d';
-    $tempDate = explode('-', $todo['dueDate']);
-    if (count($tempDate) != 3) {
-        $error = 'dueDate is not in the correct format';
-        return FALSE;
-    } elseif (!checkdate($tempDate[1], $tempDate[2], $tempDate[0])
-            || date($todo['dueDate'], $f) < date('2000-01-01', $f)
-            || date($todo['dueDate'], $f) > date('2099-01-01', $f)) {
-        $error = 'dueDate could not be parsed into a valid date between 2000-01-01 and 2099-01-01';
-        return FALSE;
-    }
-    return TRUE;
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = array();
 }
 
-$app->get('/todoitems', function() {
-    $recordList = DB::query("SELECT * FROM todoitems");
-    echo json_encode($recordList, JSON_PRETTY_PRINT);
+$app->get('/', function() use ($app) {    
+    $app->render('index.html.twig',
+            array('sessionUser' => $_SESSION['user']));
 });
 
-$app->get('/todoitems/:ID', function($ID) use ($app) {
-//    sleep(1);
-    $record = DB::queryFirstRow("SELECT * FROM todoitems WHERE ID=%d", $ID);
-    // 404 if record not found
-    if (!$record) {
-        $app->response->setStatus(404);
-        echo json_encode("Record not found");
-        return;
+// State 1: first show
+$app->get('/register', function() use ($app, $log) {
+    $app->render('register.html.twig');
+});
+// State 2: submission
+$app->post('/register', function() use ($app, $log) {
+    $name = $app->request->post('name');
+    $email = $app->request->post('email');
+    $pass1 = $app->request->post('pass1');
+    $pass2 = $app->request->post('pass2');
+    $valueList = array ('name' => $name, 'email' => $email);
+    // submission received - verify
+    $errorList = array();
+    if (strlen($name) < 4) {
+        array_push($errorList, "Name must be at least 4 characters long");
+        unset($valueList['name']);
     }
-    echo json_encode($record, JSON_PRETTY_PRINT);
-});
-
-$app->delete('/todoitems/:ID', function($ID) {
-    DB::delete('todoitems', "ID=%d", $ID);
-    echo 'true';
-});
-
-$app->post('/todoitems', function() use ($app, $log) {
-    $body = $app->request->getBody();
-    $record = json_decode($body, TRUE);
-    // FIXME: verify $record contains all and only fields required with valid values
-    if (!isTodoItemValid($record, $error, TRUE)) {
-        $app->response->setStatus(400);
-        $log->debug("POST /todoitems verification failed: " . $error);
-        echo json_encode($error);
-        //echo json_encode("Bad request - data validation failed");
-        return;
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
+        array_push($errorList, "Email does not look like a valid email");
+        unset($valueList['email']);
+    } else {
+        $user = DB::queryFirstRow("SELECT ID FROM users WHERE email=%s", $email);        
+        if ($user) {
+            array_push($errorList, "Email already registered");
+            unset($valueList['email']);
+        }
     }
-    DB::insert('todoitems', $record);
-    echo DB::insertId();
-    // POST / INSERT is special - returns 201
-    $app->response->setStatus(201);
+    if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 8)) {
+        array_push($errorList, "Password must be at least 8 characters " .
+                "long, contain at least one upper case, one lower case, " .
+                " one digit or special character");
+    } else if ($pass1 != $pass2) {
+        array_push($errorList, "Passwords don't match");
+    }
+    //
+    if ($errorList) {
+        // STATE 3: submission failed        
+        $app->render('register.html.twig', array(
+            'errorList' => $errorList, 'v' => $valueList
+        ));
+    } else {
+        // STATE 2: submission successful
+        DB::insert('users', array(
+            'name' => $name, 'email' => $email, 'password' => $pass1
+        ));
+        $id = DB::insertId();
+        $log->debug(sprintf("User %s created", $id));
+        $app->render('register_success.html.twig');
+    }
 });
 
-$app->put('/todoitems/:ID', function($ID) use ($app) {
-    $body = $app->request->getBody();
-    $record = json_decode($body, TRUE);
-    $record['ID'] = $ID; // prevent changing of ID
-    // FIXME: verify $record contains all and only fields required with valid values
-    if (!isTodoItemValid($record, $error)) {
-        $app->response->setStatus(400);
-        $log->debug("POST /todoitems verification failed: " . $error);
-        echo json_encode("Bad request - data validation failed");
-        return;
+// State 1: first show
+$app->get('/login', function() use ($app, $log) {
+    $app->render('login.html.twig');
+});
+// State 2: submission
+$app->post('/login', function() use ($app, $log) {
+    $email = $app->request->post('email');
+    $pass = $app->request->post('pass');
+    $user = DB::queryFirstRow("SELECT * FROM users WHERE email=%s", $email);    
+    if (!$user) {
+        $log->debug(sprintf("User failed for email %s from IP %s",
+                    $email, $_SERVER['REMOTE_ADDR']));
+        $app->render('login.html.twig', array('loginFailed' => TRUE));
+    } else {
+        // password MUST be compared in PHP because SQL is case-insenstive
+        if ($user['password'] == $pass) {
+            // LOGIN successful
+            unset($user['password']);
+            $_SESSION['user'] = $user;
+            $log->debug(sprintf("User %s logged in successfuly from IP %s",
+                    $user['ID'], $_SERVER['REMOTE_ADDR']));
+            $app->render('login_success.html.twig');
+        } else {
+            $log->debug(sprintf("User failed for email %s from IP %s",
+                    $email, $_SERVER['REMOTE_ADDR']));
+            $app->render('login.html.twig', array('loginFailed' => TRUE));            
+        }
     }
-    DB::update('todoitems', $record, "ID=%d", $ID);
-    echo json_encode(TRUE); // same as: echo 'true';
+});
+
+$app->get('/logout', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('logout_success.html.twig');
 });
 
 $app->run();
