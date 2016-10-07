@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+
+            var currentID = 0; // 0 means nothing is selected
+
+            function selectItem(itemID) {
+                currentID = itemID;
+                $("#currentID").html(currentID);
+                $("#waitForIt").show();
+                $.ajax({
+                    url: "/api.php/todoitems/" + currentID,
+                    // data: {},
+                    type: "GET",
+                    dataType: "json"
+                }).done(function (data) {
+                    $("input[name=title]").val(data.title);
+                    $("input[name=dueDate]").val(data.dueDate);
+                    if (data.isDone == 'true') {
+                        $("input[name=isDone]").prop('checked', '1');
+                    } else {
+                        $("input[name=isDone]").removeProp('checked');
+                    }
+                    $("#viewAddEditPane").show();                    
+                }).always(function() {
+                    $("#waitForIt").hide();
+                });
+            }
+
+
+            function refreshTodoList() {
+                $.ajax({
+                    url: "/api.php/todoitems",
+                    // data: {},
+                    type: "GET",
+                    dataType: "json"
+                }).done(function (data) {
+                    var result = '<tr><th>#</th><th>Title</th><th>Due date </th>'
+                            + '<th>Done?</th></tr>';
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        result += '<tr onclick="selectItem(' + item.ID + ')">';
+                        result += '<td>' + item.ID + '</td>';
+                        result += '<td>' + item.title + '</td>';
+                        result += '<td>' + item.dueDate + '</td>';
+                        result += '<td>' + item.isDone + '</td>';
+                        result += '</tr>';
+                    }
+                    $("#listTable").html(result);
+                });
+            }
+
+            $(document).ajaxError(function () {
+                alert("AJAX request failed");
+            });
+            $(document).ready(function () {
+                $("#waitForIt").hide();
+                refreshTodoList();
+                $("#viewAddEditPane").hide();
+
+                $("#showAddItem").click(function () {
+                    $("#viewAddEditPane").show();
+                });
+                $("#saveOrAdd").click(function () {
+                    // FIXME: verify inputs seem okay,
+                    // * title is at least 1-100 chars long
+                    // * dueDate must be chosen
+                    var titleRaw = $("input[name=title]").val();
+                    var dueDateRaw = $("input[name=dueDate]").val();
+                    console.log("DDR: " + dueDateRaw);
+                    var isDoneRaw = $("input[name=isDone]").attr('checked');
+                    if (currentID == 0) {
+                        // INSERT
+                        $.ajax({
+                            url: "/api.php/todoitems",
+                            statusCode: {
+                                400: function(xhr) {
+                                    var msg = xhr.responseText;
+                                    alert("400 received: " + msg);
+                                }
+                            },
+                            data: JSON.stringify({
+                                title: titleRaw,
+                                dueDate: dueDateRaw,
+                                isDone: isDoneRaw ? "true" : "false"
+                            }),
+                            type: "POST",
+                            dataType: "json"
+                        }).done(function () {
+                            alert("Addedd successfully");
+                            refreshTodoList();
+                        });
+                    } else {
+                        // UPDATE
+                        $.ajax({
+                            url: "/api.php/todoitems/" + currentID,
+                            data: JSON.stringify({
+                                title: titleRaw,
+                                dueDate: dueDateRaw,
+                                isDone: isDoneRaw ? "true" : "false"
+                            }),
+                            type: "PUT",
+                            dataType: "json"
+                        }).done(function () {
+                            alert("Updated successfully");
+                            refreshTodoList();
+                        });
+                    }
+                });
+                $("#delete").click(function () {
+                    if (currentID == 0)
+                        return;
+                    $.ajax({
+                        url: "/api.php/todoitems/" + currentID,
+                        data: {},
+                        type: "DELETE",
+                        dataType: "json"
+                    }).done(function () {
+                        alert("Deleted successfully");
+                        refreshTodoList();
+                    });
+                });
+                $("#cancel").click(function () {
+                    currentID = 0;
+                    $("#currentID").html('');
+                    $("input[name=title]").val('');
+                    $("input[name=dueDate]").val('');
+                    $("input[name=isDone]").removeProp('checked');
+                    $("#viewAddEditPane").hide();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="centerContent">
+            <!-- left list -->
+            <div id="listPane">
+                <button id="showAddItem">Add item</button>
+                <table id="listTable">
+
+                </table>
+
+            </div>
+            <!-- right view of single item -->
+            <div id="viewAddEditPane">
+                Current ID: <span id="currentID"></span><br>
+                Title: <input type="text" name="title"><br>
+                Due date: <input type="date" name="dueDate"><br>
+                Is done: <input type="checkbox" name="isDone"><br>
+                <button id="saveOrAdd">Save or Add</button>
+                <button id="delete">Delete</button>
+                <button id="cancel">Cancel</button>                
+            </div>
+            <div id="waitForIt" style="z-index: 2; position: absolute; top: 0; left: 200px;">
+                <img src="/swirl.gif">
+            </div>
+
+        </div>
+        <!--
+        <button id="refresh">Refresh list</button>
+        <div id="todoList"></div>
+        <div>
+            <h1>Create todo item:</h1>
+            Title: <input type="text" name="title"><br>
+            dueDate: <input type="text" name="dueDate"><br>            
+            <button id="addTodo">Add todo</button>
+        </div>
+        -->
+    </body>
+</html>

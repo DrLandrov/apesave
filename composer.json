@@ -1,0 +1,15 @@
+{
+    "name": "vendor/slimfirst",
+    "description": "Description of project slimfirst.",
+    "authors": [
+        {
+            "name": "ipd",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "1.21.0",
+        "slim/slim": "2.6.2",
+        "sergeytsalkov/meekrodb": "v2.3"
+    }
+}
