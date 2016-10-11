@@ -1,9 +1,9 @@
 SCRUMDAILY
 
+
+
+Alex
 5 oct
-
-Alex ====
-
 Did the database V1.
 Working on relationship,
 Keys,
@@ -18,6 +18,11 @@ Roshan
 -Keys,
 -designed layout of user interface
 ==========================
+Alex 
+6oct
+-Working on Register
+-Login
+=========================
 Roshan 
 6 Oct
 MADE
@@ -27,6 +32,13 @@ MADE
 -json
 - still have to css and add JS
 ==========================
+Alex
+7oct
+TODO:
+-Posting Item
+-List of item
+-Link to database
+============================
 Roshan
 7 Oct
 TODO
@@ -34,5 +46,12 @@ TODO
 -make add product page
 -link pages with database
 -add js and api
+============================
+Alex 
+11oct
+TODO:
+-Bidding
+-Buying Item
+-CSS
 
 
