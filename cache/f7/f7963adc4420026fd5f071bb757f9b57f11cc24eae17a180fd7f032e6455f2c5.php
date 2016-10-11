@@ -1,14 +1,14 @@
 <?php
 
-/* sell.html.twig */
-class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad060410843 extends Twig_Template
+/* postad_success.html.twig */
+class __TwigTemplate_137dde5d9f5be8f4e061f196c368f951ced17c0b4aee1fbd075673651dd9c5d3 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("master.html.twig", "sell.html.twig", 1);
+        $this->parent = $this->loadTemplate("master.html.twig", "postad_success.html.twig", 1);
         $this->blocks = array(
             'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
@@ -28,7 +28,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
     // line 3
     public function block_head($context, array $blocks = array())
     {
-        echo "<h1>Sell Item</h1>";
+        echo "<h1>Item Posted Successfully</h1>";
     }
 
     // line 5
@@ -58,31 +58,22 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
         }
         // line 13
         echo "
-<form method=\"post\" enctype=\"multipart/form-data\">
-    <!--No Post get for image in index file-->
-    Product Name: <input type=\"text\" name=\"pName\"><br>
-    Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
-        // line 18
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
-        echo "</textarea><br>
-    Price: <input type=\"text\" name=\"price\" value=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
-        echo "\"><br>
-    Location:<input type=\"text\" name =\"location\" value=\"";
-        // line 20
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
-        echo "\"><br>
-    <input type=\"submit\" value=\"postadd\">
-</form>
+<p>The add: [";
+        // line 14
+        echo twig_escape_filter($this->env, (isset($context["description"]) ? $context["description"] : null), "html", null, true);
+        echo ", it's ";
+        echo twig_escape_filter($this->env, (isset($context["price"]) ? $context["price"] : null), "html", null, true);
+        echo "\$ ]
+   was successfully added.
+</p>
+<a href=\"/\">Click to continue</a>
 
 ";
     }
 
     public function getTemplateName()
     {
-        return "sell.html.twig";
+        return "postad_success.html.twig";
     }
 
     public function isTraitable()
@@ -92,14 +83,14 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
 
     public function getDebugInfo()
     {
-        return array (  75 => 20,  71 => 19,  67 => 18,  60 => 13,  56 => 11,  47 => 9,  43 => 8,  40 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  63 => 14,  60 => 13,  56 => 11,  47 => 9,  43 => 8,  40 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
     {
         return "{% extends \"master.html.twig\" %}
 
-{% block head %}<h1>Sell Item</h1>{% endblock %}
+{% block head %}<h1>Item Posted Successfully</h1>{% endblock %}
 
 {% block content %}
 {% if errorList %}
@@ -110,18 +101,12 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
     </ul>
 {% endif %}
 
-<form method=\"post\" enctype=\"multipart/form-data\">
-    <!--No Post get for image in index file-->
-    Product Name: <input type=\"text\" name=\"pName\"><br>
-    Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
-    Price: <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
-    Location:<input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
-    <input type=\"submit\" value=\"postadd\">
-</form>
+<p>The add: [{{description}}, it's {{price}}\$ ]
+   was successfully added.
+</p>
+<a href=\"/\">Click to continue</a>
 
 {% endblock %}
-
 ";
     }
 }

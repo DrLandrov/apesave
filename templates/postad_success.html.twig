@@ -1,5 +1,19 @@
-{# empty Twig template #}
-<p>The add: [{{msg}}, it's {{price}}$ and can be reached at {{email}} ]
+{% extends "master.html.twig" %}
+
+{% block head %}<h1>Item Posted Successfully</h1>{% endblock %}
+
+{% block content %}
+{% if errorList %}
+    <ul>
+    {% for error in errorList %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<p>The add: [{{description}}, it's {{price}}$ ]
    was successfully added.
 </p>
 <a href="/">Click to continue</a>
+
+{% endblock %}

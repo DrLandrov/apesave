@@ -172,20 +172,26 @@ $app->get('/logout', function() use ($app, $log) {
 });
 // =======================POSTING ITEM ============================
 
-$app->post('/postad(/:id)', function($id = '') use ($app) {
-    $Description = $app->request->post('description');
+$app->post('/sell(/:id)', function($id = '') use ($app, $log) {
+    
+    
+    $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
     $image = $app->request->post('image');
+    $pName = $app->request->post('pName');
+    $fileUpload = $app->request->post($_FILES['picFile']);
 
     $valueList = array(
-        'description' => $Description,
-        'price' => $price,
-        'location'=>$location);
+        'description' => $description,
+        'pPrice' => $price,
+        'image' => $image,
+        'pLocation'=>$location,
+        'pName'=>$pName);
     
     $errorList = array();
     
-    if (strlen($Description) < 5 || strlen($Description) >300 ) {
+    if (strlen($description) < 5 || strlen($description) >300 ) {
         array_push($errorList, "Description must be at least 5 and at most 300 characters long");
         // unset($valueList['msg']);
     }
@@ -198,14 +204,10 @@ $app->post('/postad(/:id)', function($id = '') use ($app) {
         unset($valueList['price']);
     }
     
-    if (filter_var($contactEmail, FILTER_VALIDATE_EMAIL) === FALSE) {
-        array_push($errorList, "Email does not look like a valid email");
-        unset($valueList['contactEmail']);
-    }
     
     if ($errorList) {
         // State 3: failed submission
-        $app->render('postad.html.twig',
+        $app->render('sell.html.twig',
                 array(
                     'errorList' => $errorList,
                     'v' => $valueList
@@ -216,38 +218,38 @@ $app->post('/postad(/:id)', function($id = '') use ($app) {
             DB::insert('products',
                 array(
                     'description'=>$description,
-                    'price'=>$price,
-                    'contactEmail'=>$contactEmail
+                    'pPrice'=>$price,
+                    'pLocation'=>$location,
+                    'pName'=>$pName
             ));
         } else {
             DB::update('products', 
                     array(
                     'description'=>$description,
-                    'price'=>$price,
-                    'contactEmail'=>$contactEmail
+                    'pPrice'=>$price,
+                    'pLocation'=>$location,
+                    'pName'=>$pName
             ),
                     'ID=%s', $id);
         }
         $app->render('postad_success.html.twig', array(
-            'msg'=>$Description,
-            'price'=>$price,
-            'email'=>$contactEmail
+            'description'=>$description,
+            'price'=>$price
         ));
     }
-
 });
 
 // FIRST SHOW
-$app->get('/postad(/:id)', function($id = '') use ($app) {
+$app->get('/postadd(/:id)', function($id = '') use ($app) {
     if ($id === '') {
-        $app->render('postad.html.twig');
+        $app->render('sell.html.twig');
         return;
     }
     $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
     if (!$ad) {
-        $app->render("editad_notfound.html.twig");
+        $app->render("sell.html.twig");
     } else {
-        $app->render("postad.html.twig", array("v" => $ad));
+        $app->render("sell.html.twig", array("v" => $ad));
     }
 });
 
