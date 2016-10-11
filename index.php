@@ -13,9 +13,9 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
-DB::$dbName = 'slimshop';
-DB::$user = 'slimshop';
-DB::$password = 'y8L2NY6NJNF9HzPB';
+DB::$dbName = 'rolex';
+DB::$user = 'Rolex';
+DB::$password = 'FjbrEpcBptEGavuq';
 // DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
@@ -70,17 +70,28 @@ $app->get('/register', function() use ($app, $log) {
 });
 // State 2: submission
 $app->post('/register', function() use ($app, $log) {
-    $name = $app->request->post('name');
+    $uName = $app->request->post('uName');
+    $fName = $app->request->post('fName');
+    $lName = $app->request->post('lName');
     $email = $app->request->post('email');
     $pass1 = $app->request->post('pass1');
     $pass2 = $app->request->post('pass2');
-    $valueList = array ('name' => $name, 'email' => $email);
+    $valueList = array ('uName' => $uName, 'email' => $email, 'fName' => $fName, 'lName' => $lName);
     // submission received - verify
     $errorList = array();
-    if (strlen($name) < 4) {
-        array_push($errorList, "Name must be at least 4 characters long");
-        unset($valueList['name']);
+    if (strlen($uName) < 4) {
+        array_push($errorList, "Username must be at least 4 characters long");
+        unset($valueList['uName']);
     }
+    if (strlen($fName) < 2) {
+        array_push($errorList, "First name must be at least 2 characters long");
+        unset($valueList['fName']);
+    }
+    if (strlen($lName) < 2) {
+        array_push($errorList, "Last name must be at least 2 characters long");
+        unset($valueList['lName']);
+    }
+    /*
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
         array_push($errorList, "Email does not look like a valid email");
         unset($valueList['email']);
@@ -91,13 +102,16 @@ $app->post('/register', function() use ($app, $log) {
             unset($valueList['email']);
         }
     }
-    if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 8)) {
-        array_push($errorList, "Password must be at least 8 characters " .
+     */
+    /*
+    if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 6)) {
+        array_push($errorList, "Password must be at least 6 characters " .
                 "long, contain at least one upper case, one lower case, " .
                 " one digit or special character");
     } else if ($pass1 != $pass2) {
         array_push($errorList, "Passwords don't match");
     }
+     */
     //
     if ($errorList) {
         // STATE 3: submission failed        
@@ -107,10 +121,10 @@ $app->post('/register', function() use ($app, $log) {
     } else {
         // STATE 2: submission successful
         DB::insert('users', array(
-            'name' => $name, 'email' => $email, 'password' => $pass1
+            'username' => $uName, 'email' => $email, 'password' => $pass1, 'firstName' => $fName, 'lastName' => $lName, 
         ));
         $id = DB::insertId();
-        $log->debug(sprintf("User %s created", $id));
+        $log->debug(sprintf("User %s created", $uName));
         $app->render('register_success.html.twig');
     }
 });
@@ -145,9 +159,96 @@ $app->post('/login', function() use ($app, $log) {
     }
 });
 
+$app->get('/sell', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('sell.html.twig');
+});
+
+
+
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('logout_success.html.twig');
+});
+// =======================POSTING ITEM ============================
+
+$app->post('/postad(/:id)', function($id = '') use ($app) {
+    $Description = $app->request->post('description');
+    $price = $app->request->post('price');
+    $location = $app->request->post('location');
+    $image = $app->request->post('image');
+
+    $valueList = array(
+        'description' => $Description,
+        'price' => $price,
+        'location'=>$location);
+    
+    $errorList = array();
+    
+    if (strlen($Description) < 5 || strlen($Description) >300 ) {
+        array_push($errorList, "Description must be at least 5 and at most 300 characters long");
+        // unset($valueList['msg']);
+    }
+    
+    if (($price == "")
+            || !is_numeric($price)
+            || ($price < 0) 
+            || ($price > 1000000)) {
+        array_push($errorList, "Price must be provided and between 0 and 1000000");
+        unset($valueList['price']);
+    }
+    
+    if (filter_var($contactEmail, FILTER_VALIDATE_EMAIL) === FALSE) {
+        array_push($errorList, "Email does not look like a valid email");
+        unset($valueList['contactEmail']);
+    }
+    
+    if ($errorList) {
+        // State 3: failed submission
+        $app->render('postad.html.twig',
+                array(
+                    'errorList' => $errorList,
+                    'v' => $valueList
+                ));
+    } else {
+        // State 2: successful submission
+        if ($id === '') {
+            DB::insert('products',
+                array(
+                    'description'=>$description,
+                    'price'=>$price,
+                    'contactEmail'=>$contactEmail
+            ));
+        } else {
+            DB::update('products', 
+                    array(
+                    'description'=>$description,
+                    'price'=>$price,
+                    'contactEmail'=>$contactEmail
+            ),
+                    'ID=%s', $id);
+        }
+        $app->render('postad_success.html.twig', array(
+            'msg'=>$Description,
+            'price'=>$price,
+            'email'=>$contactEmail
+        ));
+    }
+
+});
+
+// FIRST SHOW
+$app->get('/postad(/:id)', function($id = '') use ($app) {
+    if ($id === '') {
+        $app->render('postad.html.twig');
+        return;
+    }
+    $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
+    if (!$ad) {
+        $app->render("editad_notfound.html.twig");
+    } else {
+        $app->render("postad.html.twig", array("v" => $ad));
+    }
 });
 
 $app->run();
