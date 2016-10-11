@@ -14,88 +14,11 @@
 <form method="post">
     <!--No Post get for image in index file-->
     Image: <input type="file" name="image"><br> 
-    Description: <textarea cols="20" rows="4" name="msg">{{v.msg}}</textarea><br>
+    Description: <textarea cols="20" rows="4" name="description">{{v.description}}</textarea><br>
     Price: <input type="text" name="price" value="{{v.price}}"><br>
-    Contact Email: <input type="email" name="contactEmail" value="{{v.contactEmail}}"><br>
+    Location:<input type="text" name ="location" value="{{v.location}}"><br>
     <input type="submit" value="Post ad">
 </form>
-<!--$app->post('/postad(/:id)', function($id = '') use ($app) {
-    $Description = $app->request->post('msg');
-    $price = $app->request->post('price');
-    $contactEmail = $app->request->post('contactEmail');
-
-    $valueList = array(
-        'msg' => $Description,
-        'price' => $price,
-        'contactEmail'=>$contactEmail);
-    // $name = $_POST['name']; // pure-PHP way - NOT recommended
-    $errorList = array();
-    
-    if (strlen($Description) < 5 || strlen($Description) >300 ) {
-        array_push($errorList, "Description must be at least 5 and at most 300 characters long");
-        // unset($valueList['msg']);
-    }
-    
-    if (($price == "")
-            || !is_numeric($price)
-            || ($price < 0) 
-            || ($price > 1000000)) {
-        array_push($errorList, "Price must be provided and between 0 and 1000000");
-        unset($valueList['price']);
-    }
-    
-    if (filter_var($contactEmail, FILTER_VALIDATE_EMAIL) === FALSE) {
-        array_push($errorList, "Email does not look like a valid email");
-        unset($valueList['contactEmail']);
-    }
-    
-    if ($errorList) {
-        // State 3: failed submission
-        $app->render('postad.html.twig',
-                array(
-                    'errorList' => $errorList,
-                    'v' => $valueList
-                ));
-    } else {
-        // State 2: successful submission
-        if ($id === '') {
-            DB::insert('products',
-                array(
-                    'description'=>$description,
-                    'price'=>$price,
-                    'contactEmail'=>$contactEmail
-            ));
-        } else {
-            DB::update('products', 
-                    array(
-                    'description'=>$description,
-                    'price'=>$price,
-                    'contactEmail'=>$contactEmail
-            ),
-                    'ID=%s', $id);
-        }
-        $app->render('postad_success.html.twig', array(
-            'msg'=>$Description,
-            'price'=>$price,
-            'email'=>$contactEmail
-        ));
-    }
-
-});
-
-// FIRST SHOW
-$app->get('/postad(/:id)', function($id = '') use ($app) {
-    if ($id === '') {
-        $app->render('postad.html.twig');
-        return;
-    }
-    $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
-    if (!$ad) {
-        $app->render("editad_notfound.html.twig");
-    } else {
-        $app->render("postad.html.twig", array("v" => $ad));
-    }
-});-->
 
 {% endblock %}
 
