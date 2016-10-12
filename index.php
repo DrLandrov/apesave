@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-$target_dir = "upload/";
-$max_file_size = 5 * 1024 * 1024;
+
+
 
 // enable on-demand class loader
 require_once 'vendor/autoload.php';
@@ -52,11 +52,10 @@ $view->parserOptions = array(
 );
 $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 
-/*
-  \Slim\Route::setDefaultConditions(array(
-  'id' => '\d+'
-  )); 
- */
+
+\Slim\Route::setDefaultConditions(array(
+    'id' => '\d+'
+));
 
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
@@ -159,45 +158,54 @@ $app->post('/login', function() use ($app, $log) {
 });
 
 $app->get('/sell', function() use ($app, $log) {
-    $_SESSION['user'] = array();
-    $app->render('sell.html.twig');
+    $app->render('sell.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 
 $app->get('/products', function() use ($app, $log) {
-    $_SESSION['user'] = array();
-    $app->render('products.html.twig');
+     $forSaleItems = DB::query(
+            "SELECT pName, pPrice, pLocation, description, image"            
+            . " FROM products ");
+     $app->render('products.html.twig', array(
+        'sessionUser' => $_SESSION['user'],
+        'forSaleItems' => $forSaleItems
+    ));
 });
 
-$app->get('/index', function() use ($app, $log) {
-    $_SESSION['user'] = array();
+$app->get('/', function() use ($app, $log) {
     $app->render('index.html.twig');
 });
 
 $app->get('/myaccount', function() use ($app, $log) {
-    $_SESSION['user'] = array();
-    $app->render('myaccount.html.twig');
+    $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
 });
+
 $app->get('/myaccountloginsuccess', function() use ($app, $log) {
-    $_SESSION['user'] = array();
     $app->render('myaccount.html.twig');
 });
+
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('logout_success.html.twig');
 });
+
+$app->get('/index', function() use ($app, $log) {
+    $app->render('index.html.twig');
+});
+
+$app->get('/contactus', function() use ($app, $log) {
+    $app->render('contactus.html.twig', array('sessionUser' => $_SESSION['user']));
+});
 // =======================POSTING ITEM ============================
 
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
-    if (!isset($_SESSION['user'])) {
-        $app->render('login.html.twig');
-    }
-
+    $target_dir = "upload/";
+    $max_file_size = 5 * 1024 * 1024;
 
     $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
     $pName = $app->request->post('pName');
-    $fileUpload = $app->request->post('image'); //TO BE CHECK
+    $fileUpload = $app->request->post($_FILES['image']); //TO BE CHECK
 
     $check = getimagesize($fileUpload["tmp_name"]);
     if (!$check) {
@@ -212,6 +220,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
         default:
             die("Error: Only accepting valie png,gif,bmp,jpg files.");
     }
+
     if ($fileUpload['size'] > $max_file_size) {
         die("Error: File to big, maximuma accepted is $max_file_size bytes");
     }
@@ -227,7 +236,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $valueList = array(
         'description' => $description,
         'pPrice' => $price,
-        'image' => $image,
+        'image' => $fileUpload,
         'pLocation' => $location,
         'pName' => $pName);
 
@@ -259,7 +268,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
                 'pPrice' => $price,
                 'pLocation' => $location,
                 'pName' => $pName,
-                'image' => $target_file //TO BE CHECKED
+                'image' => $target_file
             ));
         } else {
             DB::update('products', array(
@@ -276,18 +285,20 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     }
 });
 
-// FIRST SHOW
-$app->get('/sell(/:id)', function($id = '') use ($app) {
-    if ($id === '') {
-        $app->render('sell.html.twig');
-        return;
-    }
-    $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
-    if (!$ad) {
-        $app->render("sell.html.twig");
-    } else {
-        $app->render("sell.html.twig", array("v" => $ad));
-    }
-});
 
+/*
+
+  $app->get('/sell(/:id)', function($id = '') use ($app) {
+  if ($id === '') {
+  $app->render('sell.html.twig');
+  return;
+  }
+  $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
+  if (!$ad) {
+  $app->render("sell.html.twig");
+  } else {
+  $app->render("sell.html.twig", array("v" => $ad));
+  }
+  });
+ */
 $app->run();

@@ -35,23 +35,30 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "    
-<h1>Login</h1>
-
-";
-        // line 9
-        if ((isset($context["loginFailed"]) ? $context["loginFailed"] : null)) {
-            // line 10
-            echo "    <p>Invalid username or password</p>
-";
+        echo "
+    <h1>Login</h1>
+    ";
+        // line 8
+        if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
+            // line 9
+            echo "        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a>
+    
+    ";
         }
         // line 12
+        echo "    ";
+        if ((isset($context["loginFailed"]) ? $context["loginFailed"] : null)) {
+            // line 13
+            echo "        <p>Invalid username or password</p>
+    ";
+        }
+        // line 15
         echo "
-<form method=\"post\">
-    Email:<br> <input type=\"text\" name=\"email\"><br>
-    Password:<br> <input type=\"password\" name=\"pass\"><br>
-    <input type=\"submit\" value=\"Login\">
-</form>
+    <form method=\"post\">
+        Email:<br> <input type=\"text\" name=\"email\"><br>
+        Password:<br> <input type=\"password\" name=\"pass\"><br>
+        <input type=\"submit\" value=\"Login\">
+    </form>
 
 ";
     }
@@ -68,7 +75,7 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
 
     public function getDebugInfo()
     {
-        return array (  49 => 12,  45 => 10,  43 => 9,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  56 => 15,  52 => 13,  49 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -78,18 +85,21 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
 {% block title %}Successful registration{% endblock %}
 
 {% block content %}
+
+    <h1>Login</h1>
+    {% if sessionUser %}
+        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a>
     
-<h1>Login</h1>
+    {% endif %}
+    {% if loginFailed %}
+        <p>Invalid username or password</p>
+    {% endif %}
 
-{% if loginFailed %}
-    <p>Invalid username or password</p>
-{% endif %}
-
-<form method=\"post\">
-    Email:<br> <input type=\"text\" name=\"email\"><br>
-    Password:<br> <input type=\"password\" name=\"pass\"><br>
-    <input type=\"submit\" value=\"Login\">
-</form>
+    <form method=\"post\">
+        Email:<br> <input type=\"text\" name=\"email\"><br>
+        Password:<br> <input type=\"password\" name=\"pass\"><br>
+        <input type=\"submit\" value=\"Login\">
+    </form>
 
 {% endblock %}
 ";

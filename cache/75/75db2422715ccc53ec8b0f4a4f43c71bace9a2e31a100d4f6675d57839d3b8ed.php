@@ -50,7 +50,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 ";
         } else {
             // line 12
-            echo "<p><div id=\"buy\"><a href=\"/login\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
+            echo "<p><div id=\"buy\"><a href=\"/sell\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
 ";
         }
         // line 14
@@ -86,7 +86,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
 {% else %}
-<p><div id=\"buy\"><a href=\"/login\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
+<p><div id=\"buy\"><a href=\"/sell\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
 {% endif %}
 
 {% endblock %}

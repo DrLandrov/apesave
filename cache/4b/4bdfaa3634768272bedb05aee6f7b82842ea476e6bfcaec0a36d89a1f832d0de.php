@@ -39,61 +39,48 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
     ";
         }
         // line 9
-        echo "    ";
-        if ((isset($context["adList"]) ? $context["adList"] : null)) {
-            // line 10
-            echo "        <table border=\"1\">
-            <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Name</th>
-                <th>Operations</th>
+        echo "    
+        <table border=\"1\">
+        ";
+        // line 11
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
+            // line 12
+            echo "            <tr id=\"itemrow";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+            echo "\">
+                <td>";
+            // line 13
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 14
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 15
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 16
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
+            echo "</td>
+                <td><img height=100 src=\"/upload/";
+            // line 17
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
+            echo "\"></td>
             </tr>
-            ";
-            // line 18
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["adList"]) ? $context["adList"] : null));
-            foreach ($context['_seq'] as $context["_key"] => $context["ad"]) {
-                // line 19
-                echo "                <tr>
-                    <td>";
-                // line 20
-                echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
-                echo "</td>
-                    <td>";
-                // line 21
-                echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "pName", array()), "html", null, true);
-                echo "</td>
-                    <td>";
-                // line 22
-                echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "image", array()), "html", null, true);
-                echo "</td>
-                    <td>";
-                // line 23
-                echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "price", array()), "html", null, true);
-                echo "</td> 
-                    <td><a href='/postad/";
-                // line 24
-                echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
-                echo "'>Edit Ad</a></td>
-
-                </tr>
-            ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ad'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 28
-            echo "        </table>
-    ";
-        } else {
-            // line 30
-            echo "        <p>There are no ads yet</p>   
-    ";
+            </table>
+        ";
         }
-        // line 32
-        echo "
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 21
+        echo "   
+    
+
 ";
     }
 
@@ -109,7 +96,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
 
     public function getDebugInfo()
     {
-        return array (  96 => 32,  92 => 30,  88 => 28,  78 => 24,  74 => 23,  70 => 22,  66 => 21,  62 => 20,  59 => 19,  55 => 18,  45 => 10,  42 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  81 => 21,  71 => 17,  67 => 16,  63 => 15,  59 => 14,  55 => 13,  50 => 12,  46 => 11,  42 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -122,29 +109,20 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
     {% else %}
         <a href=\"/register\">Register</a>
     {% endif %}
-    {% if adList %}
+    
         <table border=\"1\">
-            <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Name</th>
-                <th>Operations</th>
+        {% for ci in forSaleItems %}
+            <tr id=\"itemrow{{ci.ID}}\">
+                <td>{{ci.pName}}</td>
+                <td>{{ci.pPrice}}</td>
+                <td>{{ci.pLocation}}</td>
+                <td>{{ci.description}}</td>
+                <td><img height=100 src=\"/upload/{{ ci.image}}\"></td>
             </tr>
-            {% for ad in adList %}
-                <tr>
-                    <td>{{ad.ID}}</td>
-                    <td>{{ad.pName}}</td>
-                    <td>{{ad.image}}</td>
-                    <td>{{ad.price}}</td> 
-                    <td><a href='/postad/{{ad.ID}}'>Edit Ad</a></td>
-
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>There are no ads yet</p>   
-    {% endif %}
+            </table>
+        {% endfor %}
+   
+    
 
 {% endblock %}
 ";

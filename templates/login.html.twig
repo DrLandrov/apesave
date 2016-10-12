@@ -3,17 +3,20 @@
 {% block title %}Successful registration{% endblock %}
 
 {% block content %}
+
+    <h1>Login</h1>
+    {% if sessionUser %}
+        <p> YOU ARE ALREADY LOGGED IN! <a href="/myaccount">GO TO YOUR ACCOUNT</a>
     
-<h1>Login</h1>
+    {% endif %}
+    {% if loginFailed %}
+        <p>Invalid username or password</p>
+    {% endif %}
 
-{% if loginFailed %}
-    <p>Invalid username or password</p>
-{% endif %}
-
-<form method="post">
-    Email:<br> <input type="text" name="email"><br>
-    Password:<br> <input type="password" name="pass"><br>
-    <input type="submit" value="Login">
-</form>
+    <form method="post">
+        Email:<br> <input type="text" name="email"><br>
+        Password:<br> <input type="password" name="pass"><br>
+        <input type="submit" value="Login">
+    </form>
 
 {% endblock %}
