@@ -10,7 +10,6 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
         // line 1
         $this->parent = $this->loadTemplate("master.html.twig", "products.html.twig", 1);
         $this->blocks = array(
-            'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -26,21 +25,15 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
     }
 
     // line 3
-    public function block_head($context, array $blocks = array())
-    {
-        echo "<h1>All Ads</h1> ";
-    }
-
-    // line 5
     public function block_content($context, array $blocks = array())
     {
-        // line 6
+        // line 4
         echo "<a href=\"/sell\">Post an Add</a>
 <a href=\"/register\">Register</a>
 ";
-        // line 8
+        // line 6
         if ((isset($context["adList"]) ? $context["adList"] : null)) {
-            // line 9
+            // line 7
             echo "    <table border=\"1\">
         <tr>
             <th>ID</th>
@@ -50,30 +43,30 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
             <th>Operations</th>
         </tr>
             ";
-            // line 17
+            // line 15
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["adList"]) ? $context["adList"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["ad"]) {
-                // line 18
+                // line 16
                 echo "            <tr>
                 <td>";
-                // line 19
+                // line 17
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 20
+                // line 18
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "pName", array()), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 21
+                // line 19
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "image", array()), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 22
+                // line 20
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "price", array()), "html", null, true);
                 echo "</td> 
                 <td><a href='/postad/";
-                // line 23
+                // line 21
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
                 echo "'>Edit Ad</a></td>
                 
@@ -83,15 +76,15 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ad'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 27
+            // line 25
             echo "    </table>
     ";
         } else {
-            // line 29
+            // line 27
             echo "        <p>There are no ads yet</p>   
 ";
         }
-        // line 31
+        // line 29
         echo "
 ";
     }
@@ -108,14 +101,12 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
 
     public function getDebugInfo()
     {
-        return array (  95 => 31,  91 => 29,  87 => 27,  77 => 23,  73 => 22,  69 => 21,  65 => 20,  61 => 19,  58 => 18,  54 => 17,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  88 => 29,  84 => 27,  80 => 25,  70 => 21,  66 => 20,  62 => 19,  58 => 18,  54 => 17,  51 => 16,  47 => 15,  37 => 7,  35 => 6,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
     {
         return "{% extends \"master.html.twig\" %}
-
-{% block head %}<h1>All Ads</h1> {% endblock %} 
 
 {% block content %}
 <a href=\"/sell\">Post an Add</a>

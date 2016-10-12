@@ -8,6 +8,8 @@ body {
     padding: 0;
     margin: auto;
     margin-top: 25px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     background-color: white;
     text-align: center;
 }
@@ -30,7 +32,7 @@ li {
     float: left;
 }
 
-li {
+li a {
     display: block;
     color: white;
     text-align: center;
@@ -59,5 +61,33 @@ input[name=search] {
 input[name=search]:focus {
     width: 25%;
 }
+form {
+    text-align: left;
+    margin-left: 25px;
+    color: grey;
+    
+}
+input[name=uName], [name=fName], [name=lName], [name=email], [name=pass], [name=pass1], [name=pass2]  {
+    
+    width: 700px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 
+}
 
+input[type=submit]{
+    background-color: lightskyblue;
+    height:35px;
+    margin-left: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#error{
+    
+    background-color: lightcoral;
+}
