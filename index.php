@@ -161,12 +161,16 @@ $app->get('/sell', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('sell.html.twig');
 });
+
 $app->get('/products', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('products.html.twig');
 });
 
-
+$app->get('/index', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('index.html.twig');
+});
 
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
