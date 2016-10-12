@@ -3,6 +3,7 @@
 
 
 {% block content %}
+{% if sessionUser %}   
 {% if errorList %}
     <ul>
     {% for error in errorList %}
@@ -10,7 +11,7 @@
     {% endfor %}
     </ul>
 {% endif %}
-
+         
 <form action="upload.php" method="post" enctype="multipart/form-data">
     <!--No Post get for image in index file-->
     <h1>Sell Item</h1>
@@ -21,6 +22,9 @@
     Location:<input type="text" name ="location" value="{{v.location}}"><br>
     <input type="submit" value="postadd">
 </form>
-
+{% else %}
+        <p>Please login to access My Account</p>
+        <a href="/login">Login</a>
+    {% endif %}
 {% endblock %}
 

@@ -3,7 +3,8 @@
 
 
 {% block content %}
-<a href="/sell">Sell</a>
+    {% if sessionUser %}
+        <a href="/sell">Sell</a>
 {% if adList %}
     <table border="1">
         <tr>
@@ -27,5 +28,10 @@
     {% else %}
         <p>There are no ads yet</p>   
 {% endif %}
+    {% else %}
+        <p>Please login to access My Account</p>
+        <a href="/login">Login</a>
+    {% endif %}
+
 
 {% endblock %}{# empty Twig template #}
