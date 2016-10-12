@@ -50,7 +50,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
 ";
         } else {
             // line 12
-            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
+            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/products\">BROWSE</a></p>
 ";
         }
         // line 14
@@ -86,7 +86,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
 {% else %}
-<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
+<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/products\">BROWSE</a></p>
 {% endif %}
 
 {% endblock %}
