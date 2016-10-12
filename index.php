@@ -55,7 +55,8 @@ $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 /*
   \Slim\Route::setDefaultConditions(array(
   'id' => '\d+'
-  )); */
+  )); 
+ */
 
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();

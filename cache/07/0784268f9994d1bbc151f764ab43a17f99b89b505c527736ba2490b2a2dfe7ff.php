@@ -41,11 +41,12 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         // line 14
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
-            <div id=\"footer\">                
-                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">you</a>.
-            </div>
+            
         </div>
     </body>
+    <footer id=\"footer\">                
+                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
+            </footer>
 </html>";
     }
 
@@ -73,7 +74,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
 
     public function getDebugInfo()
     {
-        return array (  65 => 14,  61 => 7,  58 => 6,  53 => 5,  42 => 14,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  66 => 14,  62 => 7,  59 => 6,  54 => 5,  42 => 14,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -92,11 +93,12 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         
         <div id=\"centerContent\">
             <div id=\"content\">{% block content %}{% endblock %}</div>
-            <div id=\"footer\">                
-                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">you</a>.
-            </div>
+            
         </div>
     </body>
+    <footer id=\"footer\">                
+                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
+            </footer>
 </html>";
     }
 }
