@@ -187,6 +187,9 @@ $app->get('/logout', function() use ($app, $log) {
 // =======================POSTING ITEM ============================
 
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
+    if (!isset($_SESSION['user'])) {
+        $app->render('login.html.twig');
+    }
 
 
     $description = $app->request->post('description');
@@ -249,6 +252,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     } else {
         // State 2: successful submission
         if ($id === '') {
+            //'sessionID' => sessionid()
             DB::insert('products', array(
                 'description' => $description,
                 'pPrice' => $price,
