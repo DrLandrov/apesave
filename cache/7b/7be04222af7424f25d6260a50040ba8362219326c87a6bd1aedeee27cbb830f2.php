@@ -77,7 +77,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
 ";
         } else {
             // line 26
-            echo "        <p>Please login to access My Account</p>
+            echo "        <p>Please login to sell</p>
         <a href=\"/login\">Login</a>
     ";
         }
@@ -125,7 +125,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
     <input type=\"submit\" value=\"postadd\">
 </form>
 {% else %}
-        <p>Please login to access My Account</p>
+        <p>Please login to sell</p>
         <a href=\"/login\">Login</a>
     {% endif %}
 {% endblock %}
