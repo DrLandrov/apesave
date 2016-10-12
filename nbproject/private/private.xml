@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/xampp/htdocs/apesave/templates/myaccount.html.twig</file>
             <file>file:/C:/xampp/htdocs/apesave/styles.css</file>
-=======
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/templates/products.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/templates/myaccount.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/templates/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/templates/master.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/templates/sell.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/index.php</file>
-            <file>file:/C:/xampp/htdocs/ipd8project/apesave/styles.css</file>
->>>>>>> a67ca313885df5b53bf122cef1a1ff59f92db197
+            <file>file:/C:/xampp/htdocs/apesave/templates/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/apesave/templates/master.html.twig</file>
+            <file>file:/C:/xampp/htdocs/apesave/index.php</file>
+            <file>file:/C:/xampp/htdocs/apesave/templates/products.html.twig</file>
         </group>
     </open-files>
 </project-private>

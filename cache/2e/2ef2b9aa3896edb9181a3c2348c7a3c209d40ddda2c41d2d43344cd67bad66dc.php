@@ -42,7 +42,7 @@ class __TwigTemplate_9c8de3bcca36dd033699c152b8824858fca471ba3d3b6d0c285cc9b9c17
         // line 9
         if ((isset($context["errorList"]) ? $context["errorList"] : null)) {
             // line 10
-            echo "    <ul>
+            echo "    <ul id=\"error\">
     ";
             // line 11
             $context['_parent'] = $context;
@@ -63,25 +63,25 @@ class __TwigTemplate_9c8de3bcca36dd033699c152b8824858fca471ba3d3b6d0c285cc9b9c17
         }
         // line 16
         echo "
-<form method=\"post\">
-    Username: <input type=\"text\" name=\"uName\" value=\"";
+<form id=\"register\" method=\"post\">
+    Username: <br> <input type=\"text\" name=\"uName\" value=\"";
         // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "uName", array()), "html", null, true);
         echo "\"><br>
-    First Name: <input type=\"text\" name=\"fName\" value=\"";
+    First Name: <br> <input type=\"text\" name=\"fName\" value=\"";
         // line 19
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "fName", array()), "html", null, true);
         echo "\"><br>
-    Last Name: <input type=\"text\" name=\"lName\" value=\"";
+    Last Name: <br> <input type=\"text\" name=\"lName\" value=\"";
         // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "lName", array()), "html", null, true);
         echo "\"><br>
-    Email: <input type=\"text\" name=\"email\" value=\"";
+    Email: <br> <input type=\"text\" name=\"email\" value=\"";
         // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "email", array()), "html", null, true);
         echo "\"><br>
-    Password: <input type=\"password\" name=\"pass1\"><br>
-    Password (repeated) <input type=\"password\" name=\"pass2\"><br>
+    Password: <br> <input type=\"password\" name=\"pass1\"><br>
+    Password (repeated): <br> <input type=\"password\" name=\"pass2\"><br>
     <input type=\"submit\" value=\"Register\">
 </form>
 
@@ -114,20 +114,20 @@ class __TwigTemplate_9c8de3bcca36dd033699c152b8824858fca471ba3d3b6d0c285cc9b9c17
 <h1>Register user</h1>
 
 {% if errorList %}
-    <ul>
+    <ul id=\"error\">
     {% for error in errorList %}
         <li>{{ error }}</li>
     {% endfor %}
     </ul>
 {% endif %}
 
-<form method=\"post\">
-    Username: <input type=\"text\" name=\"uName\" value=\"{{v.uName}}\"><br>
-    First Name: <input type=\"text\" name=\"fName\" value=\"{{v.fName}}\"><br>
-    Last Name: <input type=\"text\" name=\"lName\" value=\"{{v.lName}}\"><br>
-    Email: <input type=\"text\" name=\"email\" value=\"{{v.email}}\"><br>
-    Password: <input type=\"password\" name=\"pass1\"><br>
-    Password (repeated) <input type=\"password\" name=\"pass2\"><br>
+<form id=\"register\" method=\"post\">
+    Username: <br> <input type=\"text\" name=\"uName\" value=\"{{v.uName}}\"><br>
+    First Name: <br> <input type=\"text\" name=\"fName\" value=\"{{v.fName}}\"><br>
+    Last Name: <br> <input type=\"text\" name=\"lName\" value=\"{{v.lName}}\"><br>
+    Email: <br> <input type=\"text\" name=\"email\" value=\"{{v.email}}\"><br>
+    Password: <br> <input type=\"password\" name=\"pass1\"><br>
+    Password (repeated): <br> <input type=\"password\" name=\"pass2\"><br>
     <input type=\"submit\" value=\"Register\">
 </form>
 

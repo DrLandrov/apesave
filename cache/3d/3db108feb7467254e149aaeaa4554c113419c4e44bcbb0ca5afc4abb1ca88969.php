@@ -48,8 +48,8 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
         // line 12
         echo "
 <form method=\"post\">
-    Email: <input type=\"text\" name=\"email\"><br>
-    Password: <input type=\"password\" name=\"pass\"><br>
+    Email:<br> <input type=\"text\" name=\"email\"><br>
+    Password:<br> <input type=\"password\" name=\"pass\"><br>
     <input type=\"submit\" value=\"Login\">
 </form>
 
@@ -86,8 +86,8 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
 {% endif %}
 
 <form method=\"post\">
-    Email: <input type=\"text\" name=\"email\"><br>
-    Password: <input type=\"password\" name=\"pass\"><br>
+    Email:<br> <input type=\"text\" name=\"email\"><br>
+    Password:<br> <input type=\"password\" name=\"pass\"><br>
     <input type=\"submit\" value=\"Login\">
 </form>
 
