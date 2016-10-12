@@ -10,7 +10,6 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
         // line 1
         $this->parent = $this->loadTemplate("master.html.twig", "sell.html.twig", 1);
         $this->blocks = array(
-            'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -23,12 +22,6 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
     protected function doDisplay(array $context, array $blocks = array())
     {
         $this->parent->display($context, array_merge($this->blocks, $blocks));
-    }
-
-    // line 3
-    public function block_head($context, array $blocks = array())
-    {
-        echo "<h1>Sell Item</h1>";
     }
 
     // line 5
@@ -60,18 +53,19 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
         echo "
 <form action=\"upload.php\" method=\"post\" enctype=\"multipart/form-data\">
     <!--No Post get for image in index file-->
+    <h1>Sell Item</h1>
     Product Name: <input type=\"text\" name=\"pName\"><br>
     Image: <input type=\"file\" name=\"image\"><br> 
     Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
-        // line 18
+        // line 19
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
         echo "</textarea><br>
     Price: <input type=\"text\" name=\"price\" value=\"";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
         echo "\"><br>
     Location:<input type=\"text\" name =\"location\" value=\"";
-        // line 20
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
         echo "\"><br>
     <input type=\"submit\" value=\"postadd\">
@@ -92,14 +86,14 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
 
     public function getDebugInfo()
     {
-        return array (  75 => 20,  71 => 19,  67 => 18,  60 => 13,  56 => 11,  47 => 9,  43 => 8,  40 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  69 => 21,  65 => 20,  61 => 19,  53 => 13,  49 => 11,  40 => 9,  36 => 8,  33 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
     {
         return "{% extends \"master.html.twig\" %}
 
-{% block head %}<h1>Sell Item</h1>{% endblock %}
+
 
 {% block content %}
 {% if errorList %}
@@ -112,6 +106,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
 
 <form action=\"upload.php\" method=\"post\" enctype=\"multipart/form-data\">
     <!--No Post get for image in index file-->
+    <h1>Sell Item</h1>
     Product Name: <input type=\"text\" name=\"pName\"><br>
     Image: <input type=\"file\" name=\"image\"><br> 
     Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>

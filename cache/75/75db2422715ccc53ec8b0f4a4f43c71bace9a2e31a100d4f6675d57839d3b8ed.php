@@ -37,11 +37,10 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
         // line 6
         echo "    
 <h1>Welcome to Ape Save</h1>
-
 ";
-        // line 9
+        // line 8
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
-            // line 10
+            // line 9
             echo "    <p>Hello ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "name", array()), "html", null, true);
             echo " (";
@@ -50,11 +49,11 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
 ";
         } else {
-            // line 13
-            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
+            // line 12
+            echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/products\">BROWSE</a></p>
 ";
         }
-        // line 15
+        // line 14
         echo "
 ";
     }
@@ -71,7 +70,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 
     public function getDebugInfo()
     {
-        return array (  58 => 15,  54 => 13,  45 => 10,  43 => 9,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  57 => 14,  53 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -83,12 +82,11 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 {% block content %}
     
 <h1>Welcome to Ape Save</h1>
-
 {% if sessionUser %}
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
 {% else %}
-<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
+<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/products\">BROWSE</a></p>
 {% endif %}
 
 {% endblock %}

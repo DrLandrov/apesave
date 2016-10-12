@@ -82,7 +82,7 @@ class __TwigTemplate_9c8de3bcca36dd033699c152b8824858fca471ba3d3b6d0c285cc9b9c17
         echo "\"><br>
     Password: <input type=\"password\" name=\"pass1\"><br>
     Password (repeated) <input type=\"password\" name=\"pass2\"><br>
-    <input type=\"submit\" value=\"register\">
+    <input type=\"submit\" value=\"Register\">
 </form>
 
 ";
@@ -128,7 +128,7 @@ class __TwigTemplate_9c8de3bcca36dd033699c152b8824858fca471ba3d3b6d0c285cc9b9c17
     Email: <input type=\"text\" name=\"email\" value=\"{{v.email}}\"><br>
     Password: <input type=\"password\" name=\"pass1\"><br>
     Password (repeated) <input type=\"password\" name=\"pass2\"><br>
-    <input type=\"submit\" value=\"register\">
+    <input type=\"submit\" value=\"Register\">
 </form>
 
 {% endblock %}
