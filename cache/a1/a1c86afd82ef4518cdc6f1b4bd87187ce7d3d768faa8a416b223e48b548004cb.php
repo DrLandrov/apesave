@@ -64,7 +64,7 @@ class __TwigTemplate_d1db3f3c5ec7a2cd81e8872f74ea987b49f58bee1e5b481b58523721fbf
         // line 16
         echo "
 <form method=\"post\">
-    Username: <input type=\"text\" name=\"fName\" value=\"";
+    Username: <input type=\"text\" name=\"uName\" value=\"";
         // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "uName", array()), "html", null, true);
         echo "\"><br>
@@ -122,7 +122,7 @@ class __TwigTemplate_d1db3f3c5ec7a2cd81e8872f74ea987b49f58bee1e5b481b58523721fbf
 {% endif %}
 
 <form method=\"post\">
-    Username: <input type=\"text\" name=\"fName\" value=\"{{v.uName}}\"><br>
+    Username: <input type=\"text\" name=\"uName\" value=\"{{v.uName}}\"><br>
     First Name: <input type=\"text\" name=\"fName\" value=\"{{v.fName}}\"><br>
     Last Name: <input type=\"text\" name=\"lName\" value=\"{{v.lName}}\"><br>
     Email: <input type=\"text\" name=\"email\" value=\"{{v.email}}\"><br>

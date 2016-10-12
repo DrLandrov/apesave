@@ -1,6 +1,6 @@
 {% extends "master.html.twig" %}
 
-{% block head %}<h1>Sell Item</h1>{% endblock %}
+
 
 {% block content %}
 {% if errorList %}
@@ -13,6 +13,7 @@
 
 <form method="post" enctype="multipart/form-data">
     <!--No Post get for image in index file-->
+    <h1>Sell Item</h1>
     Product Name: <input type="text" name="pName"><br>
     Image: <input type="file" name="image"><br> 
     Description: <textarea cols="20" rows="4" name="description">{{v.description}}</textarea><br>

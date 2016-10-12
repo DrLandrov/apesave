@@ -12,7 +12,6 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'head' => array($this, 'block_head'),
-            'menucontent' => array($this, 'block_menucontent'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -33,14 +32,13 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         $this->displayBlock('head', $context, $blocks);
         // line 8
         echo "    </head>
+    <header><div id=\"menu\"><ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    </header>
     <body>
-        <div id=\"menu\">";
-        // line 10
-        $this->displayBlock('menucontent', $context, $blocks);
-        echo "</div>
+        
         <div id=\"centerContent\">
             <div id=\"content\">";
-        // line 12
+        // line 14
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
             <div id=\"footer\">                
@@ -63,13 +61,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         echo "        ";
     }
 
-    // line 10
-    public function block_menucontent($context, array $blocks = array())
-    {
-        echo "<ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul>";
-    }
-
-    // line 12
+    // line 14
     public function block_content($context, array $blocks = array())
     {
     }
@@ -81,7 +73,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
 
     public function getDebugInfo()
     {
-        return array (  73 => 12,  67 => 10,  63 => 7,  60 => 6,  55 => 5,  44 => 12,  39 => 10,  35 => 8,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  65 => 14,  61 => 7,  58 => 6,  53 => 5,  42 => 14,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -94,8 +86,10 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         {% block head %}
         {% endblock %}
     </head>
+    <header><div id=\"menu\"><ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    </header>
     <body>
-        <div id=\"menu\">{% block menucontent %}<ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul>{% endblock %}</div>
+        
         <div id=\"centerContent\">
             <div id=\"content\">{% block content %}{% endblock %}</div>
             <div id=\"footer\">                

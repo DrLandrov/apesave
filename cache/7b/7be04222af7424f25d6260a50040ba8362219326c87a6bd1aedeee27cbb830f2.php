@@ -10,7 +10,6 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
         // line 1
         $this->parent = $this->loadTemplate("master.html.twig", "sell.html.twig", 1);
         $this->blocks = array(
-            'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -23,12 +22,6 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
     protected function doDisplay(array $context, array $blocks = array())
     {
         $this->parent->display($context, array_merge($this->blocks, $blocks));
-    }
-
-    // line 3
-    public function block_head($context, array $blocks = array())
-    {
-        echo "<h1>Sell Item</h1>";
     }
 
     // line 5
@@ -58,22 +51,24 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
         }
         // line 13
         echo "
-<form method=\"post\">
+<form method=\"post\" enctype=\"multipart/form-data\">
     <!--No Post get for image in index file-->
+    <h1>Sell Item</h1>
+    Product Name: <input type=\"text\" name=\"pName\"><br>
     Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"msg\">";
-        // line 17
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "msg", array()), "html", null, true);
+    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
+        // line 19
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
         echo "</textarea><br>
     Price: <input type=\"text\" name=\"price\" value=\"";
-        // line 18
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
         echo "\"><br>
-    Contact Email: <input type=\"email\" name=\"contactEmail\" value=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "contactEmail", array()), "html", null, true);
+    Location:<input type=\"text\" name =\"location\" value=\"";
+        // line 21
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
         echo "\"><br>
-    <input type=\"submit\" value=\"Post ad\">
+    <input type=\"submit\" value=\"postadd\">
 </form>
 
 ";
@@ -91,14 +86,14 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
 
     public function getDebugInfo()
     {
-        return array (  74 => 19,  70 => 18,  66 => 17,  60 => 13,  56 => 11,  47 => 9,  43 => 8,  40 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  69 => 21,  65 => 20,  61 => 19,  53 => 13,  49 => 11,  40 => 9,  36 => 8,  33 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
     {
         return "{% extends \"master.html.twig\" %}
 
-{% block head %}<h1>Sell Item</h1>{% endblock %}
+
 
 {% block content %}
 {% if errorList %}
@@ -109,13 +104,15 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
     </ul>
 {% endif %}
 
-<form method=\"post\">
+<form method=\"post\" enctype=\"multipart/form-data\">
     <!--No Post get for image in index file-->
+    <h1>Sell Item</h1>
+    Product Name: <input type=\"text\" name=\"pName\"><br>
     Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"msg\">{{v.msg}}</textarea><br>
+    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
     Price: <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
-    Contact Email: <input type=\"email\" name=\"contactEmail\" value=\"{{v.contactEmail}}\"><br>
-    <input type=\"submit\" value=\"Post ad\">
+    Location:<input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
+    <input type=\"submit\" value=\"postadd\">
 </form>
 
 {% endblock %}

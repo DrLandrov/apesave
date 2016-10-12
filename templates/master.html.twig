@@ -6,8 +6,10 @@
         {% block head %}
         {% endblock %}
     </head>
+    <header><div id="menu"><ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul></div><input type="text" name="search" placeholder="Search..">
+    </header>
     <body>
-        <div id="menu">{% block menucontent %}<ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul>{% endblock %}</div>
+        
         <div id="centerContent">
             <div id="content">{% block content %}{% endblock %}</div>
             <div id="footer">                

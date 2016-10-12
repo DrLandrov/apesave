@@ -1,10 +1,63 @@
 body {
     background-color: #aaaa;
+    
 }
+
 #centerContent {
-    width: 500px;
+    width: 900px;
     padding: 0;
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 25px;
     background-color: white;
+    text-align: center;
 }
+header{
+    background-color: white;
+    height:25px;
+    margin:auto;
+    
+        
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li hover {
+    background-color: #111;
+}
+input[name=search] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[name=search]:focus {
+    width: 25%;
+}
+
 
