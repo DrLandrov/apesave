@@ -10,7 +10,6 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
         // line 1
         $this->parent = $this->loadTemplate("master.html.twig", "products.html.twig", 1);
         $this->blocks = array(
-            'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -26,29 +25,23 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
     }
 
     // line 3
-    public function block_head($context, array $blocks = array())
-    {
-        echo "<h1>All Ads</h1> ";
-    }
-
-    // line 5
     public function block_content($context, array $blocks = array())
     {
-        // line 6
+        // line 4
         echo "    ";
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
-            // line 7
+            // line 5
             echo "        <a href=\"/sell\">Post an Add</a>
     ";
         } else {
-            // line 9
+            // line 7
             echo "        <a href=\"/register\">Register</a>
     ";
         }
-        // line 11
+        // line 9
         echo "    ";
         if ((isset($context["adList"]) ? $context["adList"] : null)) {
-            // line 12
+            // line 10
             echo "        <table border=\"1\">
             <tr>
                 <th>ID</th>
@@ -58,30 +51,30 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
                 <th>Operations</th>
             </tr>
             ";
-            // line 20
+            // line 18
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["adList"]) ? $context["adList"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["ad"]) {
-                // line 21
+                // line 19
                 echo "                <tr>
                     <td>";
-                // line 22
+                // line 20
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 23
+                // line 21
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "pName", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 24
+                // line 22
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "image", array()), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 25
+                // line 23
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "price", array()), "html", null, true);
                 echo "</td> 
                     <td><a href='/postad/";
-                // line 26
+                // line 24
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
                 echo "'>Edit Ad</a></td>
 
@@ -91,15 +84,15 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ad'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 30
+            // line 28
             echo "        </table>
     ";
         } else {
-            // line 32
+            // line 30
             echo "        <p>There are no ads yet</p>   
     ";
         }
-        // line 34
+        // line 32
         echo "
 ";
     }
@@ -116,14 +109,12 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
 
     public function getDebugInfo()
     {
-        return array (  103 => 34,  99 => 32,  95 => 30,  85 => 26,  81 => 25,  77 => 24,  73 => 23,  69 => 22,  66 => 21,  62 => 20,  52 => 12,  49 => 11,  45 => 9,  41 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  96 => 32,  92 => 30,  88 => 28,  78 => 24,  74 => 23,  70 => 22,  66 => 21,  62 => 20,  59 => 19,  55 => 18,  45 => 10,  42 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
     {
         return "{% extends \"master.html.twig\" %}
-
-{% block head %}<h1>All Ads</h1> {% endblock %} 
 
 {% block content %}
     {% if sessionUser %}
@@ -155,7 +146,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
         <p>There are no ads yet</p>   
     {% endif %}
 
-{% endblock %}{# empty Twig template #}
+{% endblock %}
 ";
     }
 }
