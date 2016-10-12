@@ -1,13 +1,15 @@
 body {
-    background-color: lightgray;
+    background-color: white;
     
 }
 
 #centerContent {
+    
     width: 900px;
-    padding: 0;
+    padding: 5px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 30px;
+    margin-bottom: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: white;
@@ -20,12 +22,29 @@ header{
     
         
 }
+footer {
+    background-color: white;
+    height:25px;
+    margin:auto;
+    color: white;
+    background-color: #333;
+    text-decoration: none;
+}
+footer a {
+    background-color: white;
+    height:25px;
+    margin:auto;
+    color: white;
+    background-color: #333;
+text-decoration: none;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    
 }
 
 li {
@@ -90,4 +109,59 @@ input[type=submit]{
 #error{
     
     background-color: lightcoral;
+}
+#buy{
+    display: inline-block;
+    margin-left: 5px;
+    background-color: white;
+    padding: 5px;
+    height:200px;
+    width: 100px;
+    text-align: center;  
+    color: white;
+    font-family: impact;
+    font-size: 34;
+    border: solid 1px;
+    border-color: #ccc;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;   
+    text-decoration: none;
+}
+
+#reg{
+    display: inline-block;
+    margin-left: 5px;
+    background-color: white;
+    padding: 5px;
+    height:200px;
+    width: 100px;
+    text-align: center;  
+    color: white;
+    font-family: impact;
+    font-size: 34;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;  
+    border: solid 1px;
+    border-color: #ccc;
+}
+#browse{
+    display: inline-block;
+    margin-left: 5px;
+    background-color: white;
+    padding: 5px;
+    height:200px;
+    width: 100px;
+    text-align: center;  
+    color: white;
+    font-family: impact;
+    font-size: 34;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px; 
+    border: solid 1px;
+    border-color: #ccc;
 }
