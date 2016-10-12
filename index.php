@@ -197,7 +197,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $price = $app->request->post('price');
     $location = $app->request->post('location');
     $pName = $app->request->post('pName');
-    $fileUpload = $app->request->post('image');
+    $fileUpload = $app->request->post('image'); //TO BE CHECK
 
     $check = getimagesize($fileUpload["tmp_name"]);
     if (!$check) {
@@ -259,7 +259,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
                 'pPrice' => $price,
                 'pLocation' => $location,
                 'pName' => $pName,
-                'image' => $target_file
+                'image' => $target_file //TO BE CHECKED
             ));
         } else {
             DB::update('products', array(

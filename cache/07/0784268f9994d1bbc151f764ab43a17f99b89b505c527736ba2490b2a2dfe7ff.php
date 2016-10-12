@@ -32,7 +32,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         $this->displayBlock('head', $context, $blocks);
         // line 8
         echo "    </head>
-    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/login\">Buy</a></li><li><a href=\"/login\">Sell</a></li><li><a href=\"/login\">My Account</a></li><li><a href=\"/login\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/login\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/login\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
@@ -87,7 +87,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         {% block head %}
         {% endblock %}
     </head>
-    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/login\">Buy</a></li><li><a href=\"/login\">Sell</a></li><li><a href=\"/login\">My Account</a></li><li><a href=\"/login\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/login\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/login\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
