@@ -172,6 +172,14 @@ $app->get('/index', function() use ($app, $log) {
     $app->render('index.html.twig');
 });
 
+$app->get('/myaccount', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('myaccount.html.twig');
+});
+$app->get('/myaccountloginsuccess', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('myaccount.html.twig');
+});
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
     $app->render('logout_success.html.twig');

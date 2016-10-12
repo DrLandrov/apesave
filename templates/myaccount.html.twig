@@ -1,0 +1,31 @@
+{% extends "master.html.twig" %}
+
+
+
+{% block content %}
+<a href="/sell">Sell</a>
+{% if adList %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Name</th>
+            <th>Operations</th>
+        </tr>
+            {% for ad in adList %}
+            <tr>
+                <td>{{ad.ID}}</td>
+                <td>{{ad.pName}}</td>
+                <td>{{ad.image}}</td>
+                <td>{{ad.price}}</td> 
+                <td><a href='/postad/{{ad.ID}}'>Edit Ad</a></td>
+                
+            </tr>
+            {% endfor %}
+    </table>
+    {% else %}
+        <p>There are no ads yet</p>   
+{% endif %}
+
+{% endblock %}{# empty Twig template #}
