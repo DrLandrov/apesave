@@ -35,7 +35,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "<a href=\"/postad\">Post an Add</a>
+        echo "<a href=\"/sell\">Post an Add</a>
 <a href=\"/register\">Register</a>
 ";
         // line 8
@@ -118,7 +118,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
 {% block head %}<h1>All Ads</h1> {% endblock %} 
 
 {% block content %}
-<a href=\"/postad\">Post an Add</a>
+<a href=\"/sell\">Post an Add</a>
 <a href=\"/register\">Register</a>
 {% if adList %}
     <table border=\"1\">
