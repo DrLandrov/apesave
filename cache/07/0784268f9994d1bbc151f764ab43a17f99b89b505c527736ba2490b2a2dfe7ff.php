@@ -32,10 +32,13 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         $this->displayBlock('head', $context, $blocks);
         // line 8
         echo "    </head>
+    <header><div id=\"menu\"><ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    </header>
     <body>
+        
         <div id=\"centerContent\">
             <div id=\"content\">";
-        // line 11
+        // line 14
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
             <div id=\"footer\">                
@@ -58,7 +61,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         echo "        ";
     }
 
-    // line 11
+    // line 14
     public function block_content($context, array $blocks = array())
     {
     }
@@ -70,7 +73,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
 
     public function getDebugInfo()
     {
-        return array (  62 => 11,  58 => 7,  55 => 6,  50 => 5,  39 => 11,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  65 => 14,  61 => 7,  58 => 6,  53 => 5,  42 => 14,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -83,7 +86,10 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         {% block head %}
         {% endblock %}
     </head>
+    <header><div id=\"menu\"><ul><li>Home</li><li>Shop</li><li>Buy</li><li>Sell</li><li>My Account</li><li>Contact Us</li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    </header>
     <body>
+        
         <div id=\"centerContent\">
             <div id=\"content\">{% block content %}{% endblock %}</div>
             <div id=\"footer\">                
