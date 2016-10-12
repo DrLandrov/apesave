@@ -37,11 +37,10 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
         // line 6
         echo "    
 <h1>Welcome to Ape Save</h1>
-
 ";
-        // line 9
+        // line 8
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
-            // line 10
+            // line 9
             echo "    <p>Hello ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "name", array()), "html", null, true);
             echo " (";
@@ -50,11 +49,11 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
 ";
         } else {
-            // line 13
+            // line 12
             echo "<p><a href=\"/login\">BUY/SELL</a> or <a href=\"/register\">REGISTER</a> or <a href=\"/sell\">SELL</a></p>
 ";
         }
-        // line 15
+        // line 14
         echo "
 ";
     }
@@ -71,7 +70,7 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
 
     public function getDebugInfo()
     {
-        return array (  58 => 15,  54 => 13,  45 => 10,  43 => 9,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  57 => 14,  53 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -83,7 +82,6 @@ class __TwigTemplate_7c5eb86543a7d3b83dcb9442100f8744dace35f769dd280ea3e5dcf4da6
 {% block content %}
     
 <h1>Welcome to Ape Save</h1>
-
 {% if sessionUser %}
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>

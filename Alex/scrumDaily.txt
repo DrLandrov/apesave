@@ -60,4 +60,9 @@ Roshan
 - make website header and menus
 - Link all pages together(links werent working friday but finally figured it out the reason was I forgot to add get in index.php for twig file)
 - addproduct listing page where users and visitors can shop and browse existing products.
-
+============================
+Roshan
+12 Oct
+- add Css to all the pages
+- make website header and menus
+- addproduct listing page where users and visitors can shop and browse existing products

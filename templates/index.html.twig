@@ -5,7 +5,6 @@
 {% block content %}
     
 <h1>Welcome to Ape Save</h1>
-
 {% if sessionUser %}
     <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href="/sell">Click to sell</a> You may <a href="/logout">logout</a>.</p>
