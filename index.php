@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+$target_dir = "uploads/";
+$max_file_size = 5 * 1024 * 1024;
 
 // enable on-demand class loader
 require_once 'vendor/autoload.php';
@@ -51,17 +53,16 @@ $view->parserOptions = array(
 $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 
 /*
-\Slim\Route::setDefaultConditions(array(
-    'id' => '\d+'
-)); */
+  \Slim\Route::setDefaultConditions(array(
+  'id' => '\d+'
+  )); */
 
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
 
-$app->get('/', function() use ($app) {    
-    $app->render('index.html.twig',
-            array('sessionUser' => $_SESSION['user']));
+$app->get('/', function() use ($app) {
+    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 
 // State 1: first show
@@ -76,7 +77,7 @@ $app->post('/register', function() use ($app, $log) {
     $email = $app->request->post('email');
     $pass1 = $app->request->post('pass1');
     $pass2 = $app->request->post('pass2');
-    $valueList = array ('uName' => $uName, 'email' => $email, 'fName' => $fName, 'lName' => $lName);
+    $valueList = array('uName' => $uName, 'email' => $email, 'fName' => $fName, 'lName' => $lName);
     // submission received - verify
     $errorList = array();
     if (strlen($uName) < 4) {
@@ -92,25 +93,25 @@ $app->post('/register', function() use ($app, $log) {
         unset($valueList['lName']);
     }
     /*
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
-        array_push($errorList, "Email does not look like a valid email");
-        unset($valueList['email']);
-    } else {
-        $user = DB::queryFirstRow("SELECT ID FROM users WHERE email=%s", $email);        
-        if ($user) {
-            array_push($errorList, "Email already registered");
-            unset($valueList['email']);
-        }
-    }
+      if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
+      array_push($errorList, "Email does not look like a valid email");
+      unset($valueList['email']);
+      } else {
+      $user = DB::queryFirstRow("SELECT ID FROM users WHERE email=%s", $email);
+      if ($user) {
+      array_push($errorList, "Email already registered");
+      unset($valueList['email']);
+      }
+      }
      */
     /*
-    if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 6)) {
-        array_push($errorList, "Password must be at least 6 characters " .
-                "long, contain at least one upper case, one lower case, " .
-                " one digit or special character");
-    } else if ($pass1 != $pass2) {
-        array_push($errorList, "Passwords don't match");
-    }
+      if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 6)) {
+      array_push($errorList, "Password must be at least 6 characters " .
+      "long, contain at least one upper case, one lower case, " .
+      " one digit or special character");
+      } else if ($pass1 != $pass2) {
+      array_push($errorList, "Passwords don't match");
+      }
      */
     //
     if ($errorList) {
@@ -121,7 +122,7 @@ $app->post('/register', function() use ($app, $log) {
     } else {
         // STATE 2: submission successful
         DB::insert('users', array(
-            'username' => $uName, 'email' => $email, 'password' => $pass1, 'firstName' => $fName, 'lastName' => $lName, 
+            'username' => $uName, 'email' => $email, 'password' => $pass1, 'firstName' => $fName, 'lastName' => $lName,
         ));
         $id = DB::insertId();
         $log->debug(sprintf("User %s created", $uName));
@@ -137,10 +138,9 @@ $app->get('/login', function() use ($app, $log) {
 $app->post('/login', function() use ($app, $log) {
     $email = $app->request->post('email');
     $pass = $app->request->post('pass');
-    $user = DB::queryFirstRow("SELECT * FROM users WHERE email=%s", $email);    
+    $user = DB::queryFirstRow("SELECT * FROM users WHERE email=%s", $email);
     if (!$user) {
-        $log->debug(sprintf("User failed for email %s from IP %s",
-                    $email, $_SERVER['REMOTE_ADDR']));
+        $log->debug(sprintf("User failed for email %s from IP %s", $email, $_SERVER['REMOTE_ADDR']));
         $app->render('login.html.twig', array('loginFailed' => TRUE));
     } else {
         // password MUST be compared in PHP because SQL is case-insenstive
@@ -148,13 +148,11 @@ $app->post('/login', function() use ($app, $log) {
             // LOGIN successful
             unset($user['password']);
             $_SESSION['user'] = $user;
-            $log->debug(sprintf("User %s logged in successfuly from IP %s",
-                    $user['ID'], $_SERVER['REMOTE_ADDR']));
+            $log->debug(sprintf("User %s logged in successfuly from IP %s", $user['ID'], $_SERVER['REMOTE_ADDR']));
             $app->render('login_success.html.twig');
         } else {
-            $log->debug(sprintf("User failed for email %s from IP %s",
-                    $email, $_SERVER['REMOTE_ADDR']));
-            $app->render('login.html.twig', array('loginFailed' => TRUE));            
+            $log->debug(sprintf("User failed for email %s from IP %s", $email, $_SERVER['REMOTE_ADDR']));
+            $app->render('login.html.twig', array('loginFailed' => TRUE));
         }
     }
 });
@@ -173,74 +171,92 @@ $app->get('/logout', function() use ($app, $log) {
 // =======================POSTING ITEM ============================
 
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
-    
-    
+
+
     $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
-    $image = $app->request->post('image');
     $pName = $app->request->post('pName');
-    $fileUpload = $app->request->post($_FILES['picFile']);
+    $fileUpload = $app->request->post('image');
 
+    $check = getimagesize($fileUpload["tmp_name"]);
+    if (!$check) {
+        die("Error: File upload was not an image file.");
+    }
+    switch ($check['mime']) {
+        case 'image/png':
+        case 'image/gif':
+        case 'image/bmp':
+        case 'image/jpeg':
+            break;
+        default:
+            die("Error: Only accepting valie png,gif,bmp,jpg files.");
+    }
+    if ($fileUpload['size'] > $max_file_size) {
+        die("Error: File to big, maximuma accepted is $max_file_size bytes");
+    }
+
+    $file_extension = explode('/', $check['mime'])[1];
+    $target_file = $target_dir . md5($fileUpload["name"] . time()) . '.' . $file_extension;
+
+    if (move_uploaded_file($fileUpload["tmp_name"], $target_file)) {
+        echo "The file " . basename($fileUpload["name"]) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
     $valueList = array(
         'description' => $description,
         'pPrice' => $price,
         'image' => $image,
-        'pLocation'=>$location,
-        'pName'=>$pName);
-    
+        'pLocation' => $location,
+        'pName' => $pName);
+
     $errorList = array();
-    
-    if (strlen($description) < 5 || strlen($description) >300 ) {
+
+    if (strlen($description) < 5 || strlen($description) > 300) {
         array_push($errorList, "Description must be at least 5 and at most 300 characters long");
         // unset($valueList['msg']);
     }
-    
-    if (($price == "")
-            || !is_numeric($price)
-            || ($price < 0) 
-            || ($price > 1000000)) {
+
+    if (($price == "") || !is_numeric($price) || ($price < 0) || ($price > 1000000)) {
         array_push($errorList, "Price must be provided and between 0 and 1000000");
         unset($valueList['price']);
     }
-    
-    
+
+
     if ($errorList) {
         // State 3: failed submission
-        $app->render('sell.html.twig',
-                array(
-                    'errorList' => $errorList,
-                    'v' => $valueList
-                ));
+        $app->render('index.html.twig', array(
+            'errorList' => $errorList,
+            'v' => $valueList
+        ));
     } else {
         // State 2: successful submission
         if ($id === '') {
-            DB::insert('products',
-                array(
-                    'description'=>$description,
-                    'pPrice'=>$price,
-                    'pLocation'=>$location,
-                    'pName'=>$pName
+            DB::insert('products', array(
+                'description' => $description,
+                'pPrice' => $price,
+                'pLocation' => $location,
+                'pName' => $pName,
+                'image' => $target_file
             ));
         } else {
-            DB::update('products', 
-                    array(
-                    'description'=>$description,
-                    'pPrice'=>$price,
-                    'pLocation'=>$location,
-                    'pName'=>$pName
-            ),
-                    'ID=%s', $id);
+            DB::update('products', array(
+                'description' => $description,
+                'pPrice' => $price,
+                'pLocation' => $location,
+                'pName' => $pName
+                    ), 'ID=%s', $id);
         }
         $app->render('postad_success.html.twig', array(
-            'description'=>$description,
-            'price'=>$price
+            'description' => $description,
+            'price' => $price
         ));
     }
 });
 
 // FIRST SHOW
-$app->get('/postadd(/:id)', function($id = '') use ($app) {
+$app->get('/sell(/:id)', function($id = '') use ($app) {
     if ($id === '') {
         $app->render('sell.html.twig');
         return;
