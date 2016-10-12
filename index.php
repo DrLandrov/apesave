@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$target_dir = "uploads/";
+$target_dir = "upload/";
 $max_file_size = 5 * 1024 * 1024;
 
 // enable on-demand class loader
