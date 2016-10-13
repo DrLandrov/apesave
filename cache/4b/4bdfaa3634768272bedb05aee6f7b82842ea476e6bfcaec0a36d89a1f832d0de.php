@@ -47,27 +47,29 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
         $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
             // line 12
-            echo "            <tr id=\"itemrow";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
-            echo "\">
-                <td>";
+            echo "            <tr>
+                <td id=\"itemrow";
             // line 13
+            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+            echo "\"></td>
+                <td>";
+            // line 14
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 14
+            // line 15
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 15
+            // line 16
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 16
+            // line 17
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
             echo "</td>
                 <td><img height=100 src=\"/upload/";
-            // line 17
+            // line 18
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
             echo "\"></td>
             </tr>
@@ -77,10 +79,8 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 21
+        // line 22
         echo "   
-    
-
 ";
     }
 
@@ -96,7 +96,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
 
     public function getDebugInfo()
     {
-        return array (  81 => 21,  71 => 17,  67 => 16,  63 => 15,  59 => 14,  55 => 13,  50 => 12,  46 => 11,  42 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  83 => 22,  73 => 18,  69 => 17,  65 => 16,  61 => 15,  57 => 14,  53 => 13,  50 => 12,  46 => 11,  42 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -112,7 +112,8 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
     
         <table border=\"1\">
         {% for ci in forSaleItems %}
-            <tr id=\"itemrow{{ci.ID}}\">
+            <tr>
+                <td id=\"itemrow{{ci.ID}}\"></td>
                 <td>{{ci.pName}}</td>
                 <td>{{ci.pPrice}}</td>
                 <td>{{ci.pLocation}}</td>
@@ -122,8 +123,6 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
             </table>
         {% endfor %}
    
-    
-
 {% endblock %}
 ";
     }

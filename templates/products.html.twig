@@ -9,7 +9,8 @@
     
         <table border="1">
         {% for ci in forSaleItems %}
-            <tr id="itemrow{{ci.ID}}">
+            <tr>
+                <td id="itemrow{{ci.ID}}"></td>
                 <td>{{ci.pName}}</td>
                 <td>{{ci.pPrice}}</td>
                 <td>{{ci.pLocation}}</td>
@@ -19,6 +20,4 @@
             </table>
         {% endfor %}
    
-    
-
 {% endblock %}
