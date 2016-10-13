@@ -32,13 +32,14 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         $this->displayBlock('head', $context, $blocks);
         // line 8
         echo "    </head>
-    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/products\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    <header>
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/products\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
         <div id=\"centerContent\">
             <div id=\"content\">";
-        // line 14
+        // line 15
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
             
@@ -62,7 +63,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         echo "        ";
     }
 
-    // line 14
+    // line 15
     public function block_content($context, array $blocks = array())
     {
     }
@@ -74,7 +75,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
 
     public function getDebugInfo()
     {
-        return array (  66 => 14,  62 => 7,  59 => 6,  54 => 5,  42 => 14,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  67 => 15,  63 => 7,  60 => 6,  55 => 5,  43 => 15,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -87,7 +88,8 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         {% block head %}
         {% endblock %}
     </head>
-    <header><div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/products\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+    <header>
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/products\">Buy</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
