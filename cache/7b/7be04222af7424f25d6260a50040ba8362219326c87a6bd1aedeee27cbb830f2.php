@@ -28,53 +28,54 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
     public function block_content($context, array $blocks = array())
     {
         // line 6
+        echo "    ";
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             echo "   
-";
+        ";
             // line 7
             if ((isset($context["errorList"]) ? $context["errorList"] : null)) {
                 // line 8
-                echo "    <ul>
-    ";
+                echo "            <ul>
+                ";
                 // line 9
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable((isset($context["errorList"]) ? $context["errorList"] : null));
                 foreach ($context['_seq'] as $context["_key"] => $context["error"]) {
                     // line 10
-                    echo "        <li>";
+                    echo "                    <li>";
                     echo twig_escape_filter($this->env, $context["error"], "html", null, true);
                     echo "</li>
-    ";
+                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['error'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 12
-                echo "    </ul>
-";
+                echo "            </ul>
+        ";
             }
             // line 14
-            echo "         
-<form action=\"upload.php\" method=\"post\" enctype=\"multipart/form-data\">
-    <!--No Post get for image in index file-->
-    <h1>Sell Item</h1>
-    Product Name: <input type=\"text\" name=\"pName\"><br>
-    Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
+            echo "
+        <form ethod=\"post\" enctype=\"multipart/form-data\">
+            <!--No Post get for image in index file-->
+            <h1>Sell Item</h1>
+            Product Name: <input type=\"text\" name=\"pName\"><br>
+            Image: <input type=\"file\" name=\"image\"><br> 
+            Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
             // line 20
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
             echo "</textarea><br>
-    Price: <input type=\"text\" name=\"price\" value=\"";
+            Price: <input type=\"text\" name=\"price\" value=\"";
             // line 21
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
             echo "\"><br>
-    Location:<input type=\"text\" name =\"location\" value=\"";
+            Location:<input type=\"text\" name =\"location\" value=\"";
             // line 22
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
             echo "\"><br>
-    <input type=\"submit\" value=\"postadd\">
-</form>
-";
+            <input type=\"submit\" value=\"postadd\">
+        </form>
+    ";
         } else {
             // line 26
             echo "        <p>Please login to sell</p>
@@ -95,7 +96,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
 
     public function getDebugInfo()
     {
-        return array (  80 => 26,  73 => 22,  69 => 21,  65 => 20,  57 => 14,  53 => 12,  44 => 10,  40 => 9,  37 => 8,  35 => 7,  31 => 6,  28 => 5,  11 => 1,);
+        return array (  81 => 26,  74 => 22,  70 => 21,  66 => 20,  58 => 14,  54 => 12,  45 => 10,  41 => 9,  38 => 8,  36 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
@@ -105,26 +106,26 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
 
 
 {% block content %}
-{% if sessionUser %}   
-{% if errorList %}
-    <ul>
-    {% for error in errorList %}
-        <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
-         
-<form action=\"upload.php\" method=\"post\" enctype=\"multipart/form-data\">
-    <!--No Post get for image in index file-->
-    <h1>Sell Item</h1>
-    Product Name: <input type=\"text\" name=\"pName\"><br>
-    Image: <input type=\"file\" name=\"image\"><br> 
-    Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
-    Price: <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
-    Location:<input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
-    <input type=\"submit\" value=\"postadd\">
-</form>
-{% else %}
+    {% if sessionUser %}   
+        {% if errorList %}
+            <ul>
+                {% for error in errorList %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form ethod=\"post\" enctype=\"multipart/form-data\">
+            <!--No Post get for image in index file-->
+            <h1>Sell Item</h1>
+            Product Name: <input type=\"text\" name=\"pName\"><br>
+            Image: <input type=\"file\" name=\"image\"><br> 
+            Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
+            Price: <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
+            Location:<input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
+            <input type=\"submit\" value=\"postadd\">
+        </form>
+    {% else %}
         <p>Please login to sell</p>
         <a href=\"/login\">Login</a>
     {% endif %}

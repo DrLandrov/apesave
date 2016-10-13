@@ -83,7 +83,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
     ";
             } else {
                 // line 29
-                echo "        <p>There are no ads yet</p>   
+                echo "        <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
 ";
             }
             // line 31
@@ -145,7 +145,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
             {% endfor %}
     </table>
     {% else %}
-        <p>There are no ads yet</p>   
+        <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
 {% endif %}
     {% else %}
         <p>Please login to access My Account</p>

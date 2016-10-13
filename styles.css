@@ -120,12 +120,12 @@ input[type=submit]{
     text-align: center;  
     color: white;
     font-family: impact;
-    font-size: 34;
+    font-size: 43px;
     border: solid 1px;
     border-color: #ccc;
     text-align: center;
     vertical-align: middle;
-    line-height: 90px;   
+    line-height: 300px;   
     text-decoration: none;
 }
 
@@ -138,14 +138,28 @@ input[type=submit]{
     width: 200px;
     text-align: center;  
     color: white;
+    text-decoration: none;
     font-family: impact;
-    font-size: 34;
+    font-size: 43px;
     text-decoration: none;
     text-align: center;
     vertical-align: middle;
-    line-height: 90px;  
+    
+    line-height: 300px;  
     border: solid 1px;
     border-color: #ccc;
+}
+#buy  a:link {
+    color: grey;
+    text-decoration:none;
+}
+#reg  a:link {
+    color: grey;
+    text-decoration:none;
+}
+#browse  a:link {
+    color: grey;
+    text-decoration:none;
 }
 #browse{
     display: inline-block;
@@ -157,11 +171,11 @@ input[type=submit]{
     text-align: center;  
     color: white;
     font-family: impact;
-    font-size: 34;
+    font-size: 43px;
     text-decoration: none;
     text-align: center;
     vertical-align: middle;
-    line-height: 90px; 
+    line-height: 300px; 
     border: solid 1px;
     border-color: #ccc;
 }
