@@ -17,7 +17,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 DB::$dbName = 'rolex';
 DB::$user = 'Rolex';
-DB::$password = 'FjbrEpcBptEGavuq';
+DB::$password = 'zTZYV6H2nYFPS3Fb';
 // DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';

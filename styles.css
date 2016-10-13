@@ -1,10 +1,10 @@
 body {
     background-color: white;
-    
+
 }
 
 #centerContent {
-    
+
     width: 900px;
     padding: 5px;
     margin: auto;
@@ -19,8 +19,8 @@ header{
     background-color: white;
     height:25px;
     margin:auto;
-    
-        
+
+
 }
 footer {
     background-color: white;
@@ -36,22 +36,22 @@ footer a {
     margin:auto;
     color: white;
     background-color: #333;
-text-decoration: none;
+    text-decoration: none;
 }
-ul {
+#menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    
+
 }
 
-li {
+#menu li {
     float: left;
 }
 
-li a {
+#menu li a {
     display: block;
     color: white;
     text-align: center;
@@ -59,7 +59,7 @@ li a {
     text-decoration: none;
 }
 
-li hover {
+#menu li hover {
     background-color: #111;
 }
 input[name=search] {
@@ -84,10 +84,10 @@ form {
     text-align: left;
     margin-left: 25px;
     color: grey;
-    
+
 }
 input[name=uName], [name=fName], [name=lName], [name=email], [name=pass], [name=pass1], [name=pass2]  {
-    
+
     width: 700px;
     padding: 12px 20px;
     margin: 8px 0;
@@ -107,7 +107,7 @@ input[type=submit]{
 }
 
 #error{
-    
+
     background-color: lightcoral;
 }
 #buy{
@@ -144,7 +144,7 @@ input[type=submit]{
     text-decoration: none;
     text-align: center;
     vertical-align: middle;
-    
+
     line-height: 300px;  
     border: solid 1px;
     border-color: #ccc;
@@ -178,4 +178,39 @@ input[type=submit]{
     line-height: 300px; 
     border: solid 1px;
     border-color: #ccc;
+}
+
+#listing{
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: white;
+    padding: 5px;
+    height:400px;
+    width: 200px;
+    vertical-align: middle;
+    border: solid 1px;
+    border-color: #ccc;
+    text-align: left;
+
+}
+
+
+
+#pimage{
+    text-align: center;
+    
+    
+}
+
+input[name=pName], [name=image], [name=description], [name=location], [name=price]{
+
+    width: 700px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
 }

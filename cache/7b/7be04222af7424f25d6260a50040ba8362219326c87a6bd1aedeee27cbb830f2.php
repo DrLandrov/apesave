@@ -56,20 +56,20 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
             }
             // line 14
             echo "
-        <form ethod=\"post\" enctype=\"multipart/form-data\">
+        <form  method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name: <input type=\"text\" name=\"pName\"><br>
-            Image: <input type=\"file\" name=\"image\"><br> 
-            Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">";
+            Product Name:<br> <input type=\"text\" name=\"pName\"><br>
+            Image:<br> <input type=\"file\" name=\"image\"><br> 
+            Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">";
             // line 20
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
             echo "</textarea><br>
-            Price: <input type=\"text\" name=\"price\" value=\"";
+            Price:<br> <input type=\"text\" name=\"price\" value=\"";
             // line 21
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
             echo "\"><br>
-            Location:<input type=\"text\" name =\"location\" value=\"";
+            Location:<br> <input type=\"text\" name =\"location\" value=\"";
             // line 22
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
             echo "\"><br>
@@ -115,14 +115,14 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
             </ul>
         {% endif %}
 
-        <form ethod=\"post\" enctype=\"multipart/form-data\">
+        <form  method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name: <input type=\"text\" name=\"pName\"><br>
-            Image: <input type=\"file\" name=\"image\"><br> 
-            Description: <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
-            Price: <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
-            Location:<input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
+            Product Name:<br> <input type=\"text\" name=\"pName\"><br>
+            Image:<br> <input type=\"file\" name=\"image\"><br> 
+            Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
+            Price:<br> <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
+            Location:<br> <input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
             <input type=\"submit\" value=\"postadd\">
         </form>
     {% else %}

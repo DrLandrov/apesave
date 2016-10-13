@@ -6,25 +6,20 @@
     {% if sessionUser %}
         <a href="/sell">Sell</a>
 {% if adList %}
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Name</th>
-            <th>Operations</th>
-        </tr>
-            {% for ad in adList %}
-            <tr>
-                <td>{{ad.ID}}</td>
-                <td>{{ad.pName}}</td>
-                <td>{{ad.image}}</td>
-                <td>{{ad.price}}</td> 
-                <td><a href='/postad/{{ad.ID}}'>Edit Ad</a></td>
-                
-            </tr>
+    
+       <div id="listing">
+        <ul>
+        {% for ci in forSaleItems %}
+                <li><img height=100 src="/upload/{{ ci.image}}"></li>
+                <li id="itemrow{{ci.ID}}"></li>
+                <li>{{ci.pName}}</li>
+                <li>{{ci.pPrice}}</li>
+                <li>{{ci.pLocation}}</li>
+                <li>{{ci.description}}</li>
+            </ul>
             {% endfor %}
-    </table>
+        </div>
+    
     {% else %}
         <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
 {% endif %}
