@@ -56,32 +56,28 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
             }
             // line 14
             echo "
-<<<<<<< HEAD
-        <form method=\"post\" enctype=\"multipart/form-data\">
-=======
         <form  method=\"post\" enctype=\"multipart/form-data\">
->>>>>>> 6f8f34866fb4e4f7df7aad49ea66c5fdb961edb1
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
             Product Name:<br> <input type=\"text\" name=\"pName\"><br>
             Image:<br> <input type=\"file\" name=\"image\"><br> 
             Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">";
-            // line 24
+            // line 20
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "description", array()), "html", null, true);
             echo "</textarea><br>
             Price:<br> <input type=\"text\" name=\"price\" value=\"";
-            // line 25
+            // line 21
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "price", array()), "html", null, true);
             echo "\"><br>
             Location:<br> <input type=\"text\" name =\"location\" value=\"";
-            // line 26
+            // line 22
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
             echo "\"><br>
             <input type=\"submit\" value=\"sell\">
         </form>
     ";
         } else {
-            // line 30
+            // line 26
             echo "        <p>Please login to sell</p>
         <a href=\"/login\">Login</a>
     ";
@@ -100,7 +96,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
 
     public function getDebugInfo()
     {
-        return array (  85 => 30,  78 => 26,  74 => 25,  70 => 24,  58 => 14,  54 => 12,  45 => 10,  41 => 9,  38 => 8,  36 => 7,  31 => 6,  28 => 5,  11 => 1,);
+        return array (  81 => 26,  74 => 22,  70 => 21,  66 => 20,  58 => 14,  54 => 12,  45 => 10,  41 => 9,  38 => 8,  36 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
@@ -119,11 +115,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
             </ul>
         {% endif %}
 
-<<<<<<< HEAD
-        <form method=\"post\" enctype=\"multipart/form-data\">
-=======
         <form  method=\"post\" enctype=\"multipart/form-data\">
->>>>>>> 6f8f34866fb4e4f7df7aad49ea66c5fdb961edb1
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
             Product Name:<br> <input type=\"text\" name=\"pName\"><br>

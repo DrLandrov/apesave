@@ -1,0 +1,32 @@
+{% extends "master.html.twig" %}
+
+
+
+{% block content %}
+    {% if sessionUser %}
+        <a href="/sell">Sell</a>
+{% if adList %}
+    
+       <div id="listing">
+        <ul>
+        {% for ci in forSaleItems %}
+                <li><img height=100 src="/upload/{{ ci.image}}"></li>
+                <li id="itemrow{{ci.ID}}"></li>
+                <li>{{ci.pName}}</li>
+                <li>{{ci.pPrice}}</li>
+                <li>{{ci.pLocation}}</li>
+                <li>{{ci.description}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    
+    {% else %}
+        <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
+{% endif %}
+    {% else %}
+        <p>Please login to access My Account</p>
+        <a href="/login">Login</a>
+    {% endif %}
+
+
+{% endblock %}{# empty Twig template #}
