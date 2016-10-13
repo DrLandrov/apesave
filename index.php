@@ -300,5 +300,5 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
   $app->render("sell.html.twig", array("v" => $ad));
   }
   });
- */
+*/
 $app->run();
