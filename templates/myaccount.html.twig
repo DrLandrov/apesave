@@ -5,7 +5,7 @@
 {% block content %}
     {% if sessionUser %}
         <a href="/sell">Sell</a>
-{% if adList %}
+{% if myItemsForSale %}
     <table border="1">
         <tr>
             <th>ID</th>
@@ -14,13 +14,13 @@
             <th>Name</th>
             <th>Operations</th>
         </tr>
-            {% for ad in adList %}
+            {% for ad in myItemsForSale %}
             <tr>
                 <td>{{ad.ID}}</td>
                 <td>{{ad.pName}}</td>
                 <td>{{ad.image}}</td>
-                <td>{{ad.price}}</td> 
-                <td><a href='/postad/{{ad.ID}}'>Edit Ad</a></td>
+                <td>{{ad.pPrice}}</td> 
+                <td><a href='/sell/{{ad.ID}}'>Edit Ad</a></td>
                 
             </tr>
             {% endfor %}

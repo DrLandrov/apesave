@@ -61,6 +61,9 @@ if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
 
+$twig = $app->view()->getEnvironment();
+$twig->addGlobal('sessionUser', $_SESSION['user']);
+
 $app->get('/', function() use ($app) {
     $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
 });
@@ -162,10 +165,10 @@ $app->get('/sell', function() use ($app, $log) {
 });
 
 $app->get('/products', function() use ($app, $log) {
-     $forSaleItems = DB::query(
-            "SELECT pName, pPrice, pLocation, description, image"            
-            . " FROM products ");
-     $app->render('products.html.twig', array(
+    $forSaleItems = DB::query(
+                    "SELECT pName, pPrice, pLocation, description, image"
+                    . " FROM products ");
+    $app->render('products.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'forSaleItems' => $forSaleItems
     ));
@@ -175,9 +178,16 @@ $app->get('/', function() use ($app, $log) {
     $app->render('index.html.twig');
 });
 
-$app->get('/myaccount', function() use ($app, $log) {
-    $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
+$app->get('/myaccount(/:id)', function() use ($app, $log) {
+    $myItemsForSale = DB::query(
+                    "SELECT pName, pPrice, pLocation, description, image "
+                    . "FROM products, users"
+                    . "WHERE products.userID = users.ID AND sessionID=%s", session_id());
+    $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user'],
+        'myItemsForSale' => $myItemsForSale));
 });
+
+
 
 $app->get('/myaccountloginsuccess', function() use ($app, $log) {
     $app->render('myaccount.html.twig');
@@ -200,30 +210,30 @@ $app->get('/contactus', function() use ($app, $log) {
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $target_dir = "upload/";
     $max_file_size = 5 * 1024 * 1024;
-
+    
+    
     $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
     $pName = $app->request->post('pName');
-    $fileUpload = $app->request->post($_FILES['image']); //TO BE CHECK
+    $fileUpload = $app->request->post('image'); //TO BE CHECK
 
-    $check = getimagesize($fileUpload["tmp_name"]);
-    if (!$check) {
-        die("Error: File upload was not an image file.");
-    }
-    switch ($check['mime']) {
-        case 'image/png':
-        case 'image/gif':
-        case 'image/bmp':
-        case 'image/jpeg':
-            break;
-        default:
-            die("Error: Only accepting valie png,gif,bmp,jpg files.");
+    if (!isset($_FILES['image'])) {
+        // not receiving an upload of file - error!
+        array_push($errorList, "You must select a picture for upload");
+    } else {
+        $fileUpload = $_FILES['image'];
+
+        $check = getimagesize($fileUpload["tmp_name"]);
+        if (!$check) {
+            array_push($errorList, "File upload was not an image file.");
+        } elseif (!in_array($check['mime'], array('image/png', 'image/gif', 'image/bmp', 'image/jpeg'))) {
+            array_push($errorList, "Error: Only accepting valie png,gif,bmp,jpg files.");
+        } elseif ($fileUpload['size'] > $max_file_size) {
+            array_push($errorList, "Error: File to big, maximuma accepted is $max_file_size bytes");
+        }
     }
 
-    if ($fileUpload['size'] > $max_file_size) {
-        die("Error: File to big, maximuma accepted is $max_file_size bytes");
-    }
 
     $file_extension = explode('/', $check['mime'])[1];
     $target_file = $target_dir . md5($fileUpload["name"] . time()) . '.' . $file_extension;
@@ -255,20 +265,21 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
 
     if ($errorList) {
         // State 3: failed submission
-        $app->render('index.html.twig', array(
+        $app->render('sell.html.twig', array(
             'errorList' => $errorList,
             'v' => $valueList
         ));
     } else {
         // State 2: successful submission
         if ($id === '') {
-            //'sessionID' => sessionid()
+            //'userID' => sessionid()
             DB::insert('products', array(
                 'description' => $description,
                 'pPrice' => $price,
                 'pLocation' => $location,
                 'pName' => $pName,
-                'image' => $target_file
+                'image' => $target_file,
+                'userID' => $_SESSION['user']['ID']
             ));
         } else {
             DB::update('products', array(

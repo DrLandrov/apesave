@@ -34,7 +34,7 @@ class __TwigTemplate_597f13f656bb4fe5059b2e7a9d1d83ea60271dd1e3b7e4ac82b916b3cc0
             echo "        <a href=\"/sell\">Sell</a>
 ";
             // line 8
-            if ((isset($context["adList"]) ? $context["adList"] : null)) {
+            if ((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null)) {
                 // line 9
                 echo "    <table border=\"1\">
         <tr>
@@ -47,7 +47,7 @@ class __TwigTemplate_597f13f656bb4fe5059b2e7a9d1d83ea60271dd1e3b7e4ac82b916b3cc0
             ";
                 // line 17
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable((isset($context["adList"]) ? $context["adList"] : null));
+                $context['_seq'] = twig_ensure_traversable((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null));
                 foreach ($context['_seq'] as $context["_key"] => $context["ad"]) {
                     // line 18
                     echo "            <tr>
@@ -67,7 +67,7 @@ class __TwigTemplate_597f13f656bb4fe5059b2e7a9d1d83ea60271dd1e3b7e4ac82b916b3cc0
                     // line 22
                     echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "price", array()), "html", null, true);
                     echo "</td> 
-                <td><a href='/postad/";
+                <td><a href='/sell/";
                     // line 23
                     echo twig_escape_filter($this->env, $this->getAttribute($context["ad"], "ID", array()), "html", null, true);
                     echo "'>Edit Ad</a></td>
@@ -124,7 +124,7 @@ class __TwigTemplate_597f13f656bb4fe5059b2e7a9d1d83ea60271dd1e3b7e4ac82b916b3cc0
 {% block content %}
     {% if sessionUser %}
         <a href=\"/sell\">Sell</a>
-{% if adList %}
+{% if myItemsForSale %}
     <table border=\"1\">
         <tr>
             <th>ID</th>
@@ -133,13 +133,13 @@ class __TwigTemplate_597f13f656bb4fe5059b2e7a9d1d83ea60271dd1e3b7e4ac82b916b3cc0
             <th>Name</th>
             <th>Operations</th>
         </tr>
-            {% for ad in adList %}
+            {% for ad in myItemsForSale %}
             <tr>
                 <td>{{ad.ID}}</td>
                 <td>{{ad.pName}}</td>
                 <td>{{ad.image}}</td>
                 <td>{{ad.price}}</td> 
-                <td><a href='/postad/{{ad.ID}}'>Edit Ad</a></td>
+                <td><a href='/sell/{{ad.ID}}'>Edit Ad</a></td>
                 
             </tr>
             {% endfor %}

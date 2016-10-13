@@ -56,7 +56,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
             }
             // line 14
             echo "
-        <form ethod=\"post\" enctype=\"multipart/form-data\">
+        <form method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
             Product Name: <input type=\"text\" name=\"pName\"><br>
@@ -115,7 +115,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
             </ul>
         {% endif %}
 
-        <form ethod=\"post\" enctype=\"multipart/form-data\">
+        <form method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
             Product Name: <input type=\"text\" name=\"pName\"><br>

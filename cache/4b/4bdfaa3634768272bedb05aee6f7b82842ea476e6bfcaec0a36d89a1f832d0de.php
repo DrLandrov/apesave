@@ -68,7 +68,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
             // line 17
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
             echo "</td>
-                <td><img height=100 src=\"/upload/";
+                <td><img height=100 src=\"/";
             // line 18
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
             echo "\"></td>
@@ -118,7 +118,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
                 <td>{{ci.pPrice}}</td>
                 <td>{{ci.pLocation}}</td>
                 <td>{{ci.description}}</td>
-                <td><img height=100 src=\"/upload/{{ ci.image}}\"></td>
+                <td><img height=100 src=\"/{{ ci.image}}\"></td>
             </tr>
             </table>
         {% endfor %}
