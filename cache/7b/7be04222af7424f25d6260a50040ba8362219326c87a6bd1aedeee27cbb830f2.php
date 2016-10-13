@@ -73,7 +73,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
             // line 22
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "location", array()), "html", null, true);
             echo "\"><br>
-            <input type=\"submit\" value=\"postadd\">
+            <input type=\"submit\" value=\"sell\">
         </form>
     ";
         } else {
@@ -123,7 +123,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
             Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
             Price:<br> <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>
             Location:<br> <input type=\"text\" name =\"location\" value=\"{{v.location}}\"><br>
-            <input type=\"submit\" value=\"postadd\">
+            <input type=\"submit\" value=\"sell\">
         </form>
     {% else %}
         <p>Please login to sell</p>

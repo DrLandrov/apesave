@@ -64,10 +64,10 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
             // line 19
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
             echo "\"></div><br>
-                <center><b>";
+                <center><b><u>";
             // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
-            echo "</b></center><br>
+            echo "</u></b></center><br>
                 Price:<b> \$";
             // line 21
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
@@ -128,7 +128,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
                 <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
                 {{ci.ID}}<br>
                 <div id=\"pimage\"><img height=100 src=\"/upload/{{ci.image}}\"></div><br>
-                <center><b>{{ci.pName}}</b></center><br>
+                <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>
                 Description: {{ci.description}}<br>
