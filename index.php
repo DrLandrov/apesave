@@ -61,6 +61,9 @@ if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
 
+$app->get('/', function() use ($app, $log) {
+    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
+});
 
 // ======================================REGISTER ============================
 $app->get('/register', function() use ($app, $log) {
@@ -151,6 +154,13 @@ $app->post('/login', function() use ($app, $log) {
         }
     }
 });
+
+//============================================LOGIN SUCCESS===========================
+
+$app->get('/myaccountloginsuccess', function() use ($app, $log) {
+    $app->render('myaccount.html.twig');
+});
+
 //=============================================LOGOUT ============================
 $app->get('/logout', function() use ($app, $log) {
     $_SESSION['user'] = array();
@@ -168,7 +178,6 @@ $app->get('/products', function() use ($app, $log) {
     ));
 });
 
-
 //=============================MY ACCOUNT ================================
 $app->get('/myaccount(/:id)', function() use ($app, $log) {
     if (isset($_SESSION['user']['ID'])) {
@@ -181,14 +190,6 @@ $app->get('/myaccount(/:id)', function() use ($app, $log) {
     } else {
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
     }
-});
-
-$app->get('/', function() use ($app, $log) {
-    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
-});
-
-$app->get('/myaccountloginsuccess', function() use ($app, $log) {
-    $app->render('myaccount.html.twig');
 });
 
 //=================================INDEX=========================================
