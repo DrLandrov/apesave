@@ -186,9 +186,11 @@ $app->get('/products', function() use ($app, $log) {
 });
 //=============================BUY IT=====================================
 $app->get('/buyit', function() use ($app, $log) {
+    $productID = $app->request()->post('productID');
     $forSaleItems = DB::query(
                     "SELECT pName, pPrice, pLocation, description, image"
-                    . " FROM products ");
+                    . " FROM products "
+                    . "WHERE productID = %d", $productID);
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'forSaleItems' => $forSaleItems
