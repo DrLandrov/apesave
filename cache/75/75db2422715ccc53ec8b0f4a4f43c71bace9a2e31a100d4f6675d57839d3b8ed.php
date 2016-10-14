@@ -53,7 +53,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 ";
         } else {
             // line 15
-            echo "    <h1>Welcome to Ape Save</h1>
+            echo "<h1>Welcome to Ape Save</h1>
 <p><div id=\"buy\"><a href=\"/sell\">SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">SHOP</a></div></p>
 ";
         }
@@ -93,7 +93,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
         <p><div id=\"buy\"><a href=\"/sell\">SELL</a></div><div id=\"browse\"><a href=\"/products\">SHOP</a></div></p>
     
 {% else %}
-    <h1>Welcome to Ape Save</h1>
+<h1>Welcome to Ape Save</h1>
 <p><div id=\"buy\"><a href=\"/sell\">SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">SHOP</a></div></p>
 {% endif %}
 
