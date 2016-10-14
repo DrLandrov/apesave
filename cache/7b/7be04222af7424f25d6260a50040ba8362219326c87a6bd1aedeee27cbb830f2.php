@@ -59,7 +59,10 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
         <form  method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name:<br> <input type=\"text\" name=\"pName\"><br>
+            Product Name:<br> <input type=\"text\" name=\"pName\" value=\"";
+            // line 18
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "pName", array()), "html", null, true);
+            echo "\"><br>
             Image:<br> <input type=\"file\" name=\"image\"><br> 
             Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">";
             // line 20
@@ -96,7 +99,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
 
     public function getDebugInfo()
     {
-        return array (  81 => 26,  74 => 22,  70 => 21,  66 => 20,  58 => 14,  54 => 12,  45 => 10,  41 => 9,  38 => 8,  36 => 7,  31 => 6,  28 => 5,  11 => 1,);
+        return array (  84 => 26,  77 => 22,  73 => 21,  69 => 20,  64 => 18,  58 => 14,  54 => 12,  45 => 10,  41 => 9,  38 => 8,  36 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
@@ -118,7 +121,7 @@ class __TwigTemplate_4aa73361053f5272fd19b57eece953785e4b67a4efa63cf14cb0268d9c0
         <form  method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name:<br> <input type=\"text\" name=\"pName\"><br>
+            Product Name:<br> <input type=\"text\" name=\"pName\" value=\"{{v.pName}}\"><br>
             Image:<br> <input type=\"file\" name=\"image\"><br> 
             Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
             Price:<br> <input type=\"text\" name=\"price\" value=\"{{v.price}}\"><br>

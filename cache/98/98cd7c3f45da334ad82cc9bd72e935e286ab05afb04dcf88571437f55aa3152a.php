@@ -34,7 +34,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
             echo "        <a href=\"/sell\">Sell</a>
 ";
             // line 8
-            if ((isset($context["adList"]) ? $context["adList"] : null)) {
+            if ((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null)) {
                 // line 9
                 echo "    
        <div id=\"listing\">
@@ -42,7 +42,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
         ";
                 // line 12
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
+                $context['_seq'] = twig_ensure_traversable((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null));
                 foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
                     // line 13
                     echo "                <li><img height=100 src=\"/upload/";
@@ -121,11 +121,11 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
 {% block content %}
     {% if sessionUser %}
         <a href=\"/sell\">Sell</a>
-{% if adList %}
+{% if myItemsForSale %}
     
        <div id=\"listing\">
         <ul>
-        {% for ci in forSaleItems %}
+        {% for ci in myItemsForSale %}
                 <li><img height=100 src=\"/upload/{{ ci.image}}\"></li>
                 <li id=\"itemrow{{ci.ID}}\"></li>
                 <li>{{ci.pName}}</li>
