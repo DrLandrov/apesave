@@ -6,11 +6,13 @@
     
 <h1>Welcome to Ape Save</h1>
     {% if sessionUser %}
-        <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
+        <p>Hello, {{sessionUser.uName}} {{sessionUser.email}}.
         <a href="/sell">Click to sell</a> You may <a href="/logout">logout</a>.</p>
-    {% endif %}
-
-<p><div id="buy"><a href="/sell">BUY/SELL</a></div><div id="reg"><a href="/register">REGISTER</a></div><div id="browse"><a href="/products">BROWSE</a></div></p>
-
+        <br>
+        <p><div id="buy"><a href="/sell">SELL</a></div><div id="browse"><a href="/products">SHOP</a></div></p>
+    
+{% else %}
+<p><div id="buy"><a href="/sell">SELL</a></div><div id="reg"><a href="/register">REGISTER</a></div><div id="browse"><a href="/products">SHOP</a></div></p>
+{% endif %}
 
 {% endblock %}

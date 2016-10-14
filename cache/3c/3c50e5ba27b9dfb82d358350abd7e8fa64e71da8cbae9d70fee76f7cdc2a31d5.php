@@ -46,7 +46,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
                 // line 9
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
                 echo "<br>
-                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"/upload/";
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
                 // line 10
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
                 echo "\"></a></div><br>
@@ -98,7 +98,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
                 // line 28
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
                 echo "<br>
-                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"/upload/";
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
                 // line 29
                 echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
                 echo "\"></a></div><br>
@@ -164,7 +164,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
             
                 <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
                 {{ci.ID}}<br>
-                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"/upload/{{ci.image}}\"></a></div><br>
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"{{ci.image}}\"></a></div><br>
                 <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>
@@ -183,7 +183,7 @@ class __TwigTemplate_b8fde550cdd5d72ca30619626470f568dadb3a9c77f04f3eaa7bf96f419
             
                 <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
                 {{ci.ID}}<br>
-                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"/upload/{{ci.image}}\"></a></div><br>
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"{{ci.image}}\"></a></div><br>
                 <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>

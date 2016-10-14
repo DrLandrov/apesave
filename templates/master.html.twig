@@ -7,7 +7,7 @@
         {% endblock %}
     </head>
     <header>
-        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li><a href="/login">Login</a></li><li><a href="/contactus">Contact Us</a></li></ul></div><input type="text" name="search" placeholder="Search..">
+        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li>{% if sessionUser %}<a href="/logout">Logout{% else %}<a href="/login">Login{% endif %}</a></li><li><a href="/contactus">Contact Us</a></li></ul></div><input type="text" name="search" placeholder="Search..">
     </header>
     <body>
         

@@ -5,7 +5,13 @@
 {% block content %}
             
 <h1>Register user</h1>
-
+{% if sessionUser %}
+        <p> YOU ARE ALREADY REGISTERED! <br>
+            Would you like to <a href="/myaccount">go to your account</a> OR <a href="/logout">logout</a>
+    
+    
+    {% else %}
+        
 {% if errorList %}
     <ul id="error">
     {% for error in errorList %}
@@ -13,7 +19,7 @@
     {% endfor %}
     </ul>
 {% endif %}
-
+   
 <form id="register" method="post">
     Username: <br> <input type="text" name="uName" value="{{v.uName}}"><br>
     First Name: <br> <input type="text" name="fName" value="{{v.fName}}"><br>
@@ -23,6 +29,7 @@
     Password (repeated): <br> <input type="password" name="pass2"><br>
     <input type="submit" value="Register">
 </form>
-
+    
+{% endif %}
 {% endblock %}
     

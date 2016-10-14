@@ -6,9 +6,12 @@
 
     <h1>Login</h1>
     {% if sessionUser %}
-        <p> YOU ARE ALREADY LOGGED IN! <a href="/myaccount">GO TO YOUR ACCOUNT</a> OR <a href="/logout">LOGOUT</a>
+        <p> YOU ARE ALREADY LOGGED IN! <br>
+            Would you like to <a href="/myaccount">go to your account</a> OR <a href="/logout">logout</a>
     
-    {% endif %}
+    
+    {% else %}
+        
     {% if loginFailed %}
         <p>Invalid username or password</p>
     {% endif %}
@@ -18,5 +21,5 @@
         Password:<br> <input type="password" name="pass"><br>
         <input type="submit" value="Login">
     </form>
-
+{% endif %}
 {% endblock %}
