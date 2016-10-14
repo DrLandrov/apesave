@@ -15,6 +15,7 @@ $log = new Logger('main');
 $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
+//DB CONNECTION
 DB::$dbName = 'rolex';
 DB::$user = 'Rolex';
 DB::$password = 'Fuqw4qySPrjKFnuL';
@@ -36,11 +37,9 @@ function sql_error_handler($params) {
     $log->error(" in query: " . $params['query']);
     http_response_code(500);
     $app->render('error_internal.html.twig');
-    die; // don't want to keep going if a query broke
+    die; 
 }
 
-// instantiate Slim - router in front controller (this file)
-// Slim creation and setup
 $app = new \Slim\Slim(array(
     'view' => new \Slim\Views\Twig()
         ));
@@ -57,15 +56,13 @@ $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
     'id' => '\d+'
 ));
 
+
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
 
-$app->get('/', function() use ($app) {
-    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
-});
 
-// State 1: first show
+// ======================================REGISTER ============================
 $app->get('/register', function() use ($app, $log) {
     $app->render('register.html.twig');
 });
@@ -103,8 +100,6 @@ $app->post('/register', function() use ($app, $log) {
       unset($valueList['email']);
       }
       }
-     */
-    /*
       if (!preg_match('/[0-9;\'".,<>`~|!@#$%^&*()_+=-]/', $pass1) || (!preg_match('/[a-z]/', $pass1)) || (!preg_match('/[A-Z]/', $pass1)) || (strlen($pass1) < 6)) {
       array_push($errorList, "Password must be at least 6 characters " .
       "long, contain at least one upper case, one lower case, " .
@@ -113,7 +108,7 @@ $app->post('/register', function() use ($app, $log) {
       array_push($errorList, "Passwords don't match");
       }
      */
-    //
+   
     if ($errorList) {
         // STATE 3: submission failed        
         $app->render('register.html.twig', array(
@@ -130,7 +125,7 @@ $app->post('/register', function() use ($app, $log) {
     }
 });
 
-// State 1: first show
+// ====================================LOGIN====================================
 $app->get('/login', function() use ($app, $log) {
     $app->render('login.html.twig', array('sessionUser' => $_SESSION['user']));
 });
@@ -156,11 +151,13 @@ $app->post('/login', function() use ($app, $log) {
         }
     }
 });
-
-$app->get('/sell', function() use ($app, $log) {
-    $app->render('sell.html.twig', array('sessionUser' => $_SESSION['user']));
+//=============================================LOGOUT ============================
+$app->get('/logout', function() use ($app, $log) {
+    $_SESSION['user'] = array();
+    $app->render('logout_success.html.twig');
 });
 
+//============================PRODUCTS =================================
 $app->get('/products', function() use ($app, $log) {
     $forSaleItems = DB::query(
                     "SELECT pName, pPrice, pLocation, description, image"
@@ -171,10 +168,8 @@ $app->get('/products', function() use ($app, $log) {
     ));
 });
 
-$app->get('/', function() use ($app, $log) {
-    $app->render('index.html.twig');
-});
 
+//=============================MY ACCOUNT ================================
 $app->get('/myaccount(/:id)', function() use ($app, $log) {
     if (isset($_SESSION['user']['ID'])) {
         $myItemsForSale = DB::query(
@@ -182,32 +177,37 @@ $app->get('/myaccount(/:id)', function() use ($app, $log) {
                         . "FROM products, users "
                         . "WHERE products.userID = users.ID AND products.userID = %s ", $_SESSION['user']['ID']);
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user'],
-        'myItemsForSale' => $myItemsForSale));
-    }else{
+            'myItemsForSale' => $myItemsForSale));
+    } else {
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
     }
-    
 });
 
-
+$app->get('/', function() use ($app, $log) {
+    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
+});
 
 $app->get('/myaccountloginsuccess', function() use ($app, $log) {
     $app->render('myaccount.html.twig');
 });
 
-$app->get('/logout', function() use ($app, $log) {
-    $_SESSION['user'] = array();
-    $app->render('logout_success.html.twig');
-});
+//=================================INDEX=========================================
 
 $app->get('/index', function() use ($app, $log) {
     $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 
+//============================CONTACT US ==========================
+
 $app->get('/contactus', function() use ($app, $log) {
     $app->render('contactus.html.twig', array('sessionUser' => $_SESSION['user']));
 });
+
 // =======================POSTING ITEM ============================
+
+$app->get('/sell', function() use ($app, $log) {
+    $app->render('sell.html.twig', array('sessionUser' => $_SESSION['user']));
+});
 
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $target_dir = "upload/";
@@ -219,13 +219,14 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $location = $app->request->post('location');
     $pName = $app->request->post('pName');
     $fileUpload = $app->request->post('image'); //TO BE CHECK
+    $_FILES['image'] = $fileUpload;
 
+    $errorList = array();
     if (!isset($_FILES['image'])) {
         // not receiving an upload of file - error!
         array_push($errorList, "You must select a picture for upload");
     } else {
         $fileUpload = $_FILES['image'];
-
         $check = getimagesize($fileUpload["tmp_name"]);
         if (!$check) {
             array_push($errorList, "File upload was not an image file.");
@@ -235,16 +236,6 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
             array_push($errorList, "Error: File to big, maximuma accepted is $max_file_size bytes");
         }
     }
-
-
-    $file_extension = explode('/', $check['mime'])[1];
-    $target_file = $target_dir . md5($fileUpload["name"] . time()) . '.' . $file_extension;
-
-    if (move_uploaded_file($fileUpload["tmp_name"], $target_file)) {
-        echo "The file " . basename($fileUpload["name"]) . " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
     $valueList = array(
         'description' => $description,
         'pPrice' => $price,
@@ -252,29 +243,35 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
         'pLocation' => $location,
         'pName' => $pName);
 
-    $errorList = array();
 
     if (strlen($description) < 5 || strlen($description) > 300) {
         array_push($errorList, "Description must be at least 5 and at most 300 characters long");
-        // unset($valueList['msg']);
     }
 
     if (($price == "") || !is_numeric($price) || ($price < 0) || ($price > 1000000)) {
         array_push($errorList, "Price must be provided and between 0 and 1000000");
         unset($valueList['price']);
     }
-
+    if (strlen($pName) <2 || strlen($pName)> 30){
+        array_push($errorList, "Name of the product must be at least 2 character and 30 character max");
+    }
 
     if ($errorList) {
         // State 3: failed submission
         $app->render('sell.html.twig', array(
             'errorList' => $errorList,
-            'v' => $valueList
+            'v' => $valueList, 'sessionUser' => $_SESSION['user']
         ));
     } else {
         // State 2: successful submission
         if ($id === '') {
-            //'userID' => sessionid()
+            $file_extension = explode('/', $check['mime'])[1];
+            $target_file = $target_dir . md5($fileUpload["name"] . time()) . '.' . $file_extension;
+            if (move_uploaded_file($fileUpload["tmp_name"], $target_file)) {
+                echo "The file " . basename($fileUpload["name"]) . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
             DB::insert('products', array(
                 'description' => $description,
                 'pPrice' => $price,
@@ -283,6 +280,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
                 'image' => $target_file,
                 'userID' => $_SESSION['user']['ID']
             ));
+            //SUBMISSION UPDATE (UPDATING AN ADD)
         } else {
             DB::update('products', array(
                 'description' => $description,
@@ -298,20 +296,4 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     }
 });
 
-
-/*
-
-  $app->get('/sell(/:id)', function($id = '') use ($app) {
-  if ($id === '') {
-  $app->render('sell.html.twig');
-  return;
-  }
-  $ad = DB::queryOneRow("SELECT * FROM products WHERE ID=%d", $id);
-  if (!$ad) {
-  $app->render("sell.html.twig");
-  } else {
-  $app->render("sell.html.twig", array("v" => $ad));
-  }
-  });
- */
 $app->run();
