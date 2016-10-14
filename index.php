@@ -20,7 +20,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
     DB::$user = 'Rolex';
-    DB::$password = 'ZaNeDWQGHRx7SbcB';
+    DB::$password = 'peterpan';
 } else {
     DB::$dbName = 'cp4724_Rolex';
     DB::$user = 'cp4724_Rolex';
@@ -191,8 +191,8 @@ $app->get('/products', function() use ($app, $log) {
 $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
     $productID = $app->request()->post('ID');
     $forSaleItems = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image"
-                    ."FROM products"
+                    "SELECT pName, pPrice, pLocation, description, image "
+                    . "FROM products"
                     ."WHERE productID = %d", $productID);
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
