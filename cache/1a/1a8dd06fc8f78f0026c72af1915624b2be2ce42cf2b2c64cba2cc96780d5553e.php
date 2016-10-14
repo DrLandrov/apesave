@@ -59,7 +59,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
         <form method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name:<br> <input type=\"text\" name=\"name\"value=\"";
+            Product Name:<br> <input type=\"text\" name=\"name\" value=\"";
             // line 18
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "pName", array()), "html", null, true);
             echo "\"><br>
@@ -121,7 +121,7 @@ class __TwigTemplate_0723ca4eee01a820f40956012fb31979c73c24c23b91eab0014a6ad0604
         <form method=\"post\" enctype=\"multipart/form-data\">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name:<br> <input type=\"text\" name=\"name\"value=\"{{v.pName}}\"><br>
+            Product Name:<br> <input type=\"text\" name=\"name\" value=\"{{v.pName}}\"><br>
             Image:<br> <input type=\"file\" name=\"image\"><br> 
             Description:<br> <textarea cols=\"20\" rows=\"4\" name=\"description\">{{v.description}}</textarea><br>
             Price:<br> <input type=\"text\" name=\"price\" value=\"{{v.pPrice}}\"><br>

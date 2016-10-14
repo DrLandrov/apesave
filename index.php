@@ -16,7 +16,7 @@ $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 //DB CONNECTION
-<<<<<<< HEAD
+
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
     DB::$user = 'Rolex';
@@ -26,12 +26,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$user = 'cp4724_Rolex';
     DB::$password = '(37&AdUlX%DT';
 }
-=======
-DB::$dbName = 'rolex';
-DB::$user = 'Rolex';
-DB::$password = 'peterpan';
->>>>>>> 09bb5c0013c082454bb662289f157cd58c9b4839
-// DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
+
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
 

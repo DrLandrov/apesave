@@ -31,64 +31,110 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
         echo "    ";
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             // line 5
-            echo "        <a href=\"/sell\">Sell</a>
-        <br>
-    ";
+            echo "         ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
+            foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
+                // line 6
+                echo "         <div id=\"listing\">
+            
+                <!--<li id=\"itemrow";
+                // line 8
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+                echo "\"></li>-->
+                ";
+                // line 9
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+                echo "<br>
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
+                // line 10
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
+                echo "\"></a></div><br>
+                <center><b><u>";
+                // line 11
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
+                echo "</u></b></center><br>
+                Price:<b> \$";
+                // line 12
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
+                echo "</b><br>
+                Item Location: ";
+                // line 13
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
+                echo "<br>
+                Description: ";
+                // line 14
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
+                echo "<br>
+                <br>
+                <button id=\"buyitbutton\" onclick=\"location.href='/buyit'\">Buy It</button><br>
+               
+        </div>
+        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 20
+            echo "    ";
         } else {
-            // line 8
+            // line 21
             echo "        <a href=\"/register\">Register</a>
         <a href=\"/login\">Login</a><br>
-    ";
-        }
-        // line 11
-        echo "    
-        
-        ";
-        // line 13
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
-        foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
-            // line 14
-            echo "           
+         ";
+            // line 23
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["forSaleItems"]) ? $context["forSaleItems"] : null));
+            foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
+                // line 24
+                echo "           
             <div id=\"listing\">
             
                 <!--<li id=\"itemrow";
-            // line 17
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
-            echo "\"></li>-->
+                // line 27
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+                echo "\"></li>-->
                 ";
-            // line 18
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
-            echo "<br>
+                // line 28
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+                echo "<br>
                 <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
-            // line 19
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
-            echo "\"></a></div><br>
+                // line 29
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
+                echo "\"></a></div><br>
                 <center><b><u>";
-            // line 20
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
-            echo "</u></b></center><br>
+                // line 30
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
+                echo "</u></b></center><br>
                 Price:<b> \$";
-            // line 21
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
-            echo "</b><br>
+                // line 31
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
+                echo "</b><br>
                 Item Location: ";
-            // line 22
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
-            echo "<br>
+                // line 32
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
+                echo "<br>
                 Description: ";
-            // line 23
-            echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
-            echo "<br>
+                // line 33
+                echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
+                echo "<br>
+                <br>
+                <button id=\"buyitbutton\" onclick=\"location.href='/buyit'\">Buy It</button> 
         </div>
                     
         ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 39
+            echo "    ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
-        echo "   
+        // line 40
+        echo "    
+        
+       
+   
 ";
     }
 
@@ -104,7 +150,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
 
     public function getDebugInfo()
     {
-        return array (  91 => 27,  81 => 23,  77 => 22,  73 => 21,  69 => 20,  65 => 19,  61 => 18,  57 => 17,  52 => 14,  48 => 13,  44 => 11,  39 => 8,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  134 => 40,  131 => 39,  119 => 33,  115 => 32,  111 => 31,  107 => 30,  103 => 29,  99 => 28,  95 => 27,  90 => 24,  86 => 23,  82 => 21,  79 => 20,  67 => 14,  63 => 13,  59 => 12,  55 => 11,  51 => 10,  47 => 9,  43 => 8,  39 => 6,  34 => 5,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -113,15 +159,25 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
 
 {% block content %}
     {% if sessionUser %}
-        <a href=\"/sell\">Sell</a>
-        <br>
+         {% for ci in forSaleItems %}
+         <div id=\"listing\">
+            
+                <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
+                {{ci.ID}}<br>
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"{{ci.image}}\"></a></div><br>
+                <center><b><u>{{ci.pName}}</u></b></center><br>
+                Price:<b> \${{ci.pPrice}}</b><br>
+                Item Location: {{ci.pLocation}}<br>
+                Description: {{ci.description}}<br>
+                <br>
+                <button id=\"buyitbutton\" onclick=\"location.href='/buyit'\">Buy It</button><br>
+               
+        </div>
+        {% endfor %}
     {% else %}
         <a href=\"/register\">Register</a>
         <a href=\"/login\">Login</a><br>
-    {% endif %}
-    
-        
-        {% for ci in forSaleItems %}
+         {% for ci in forSaleItems %}
            
             <div id=\"listing\">
             
@@ -132,9 +188,15 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>
                 Description: {{ci.description}}<br>
+                <br>
+                <button id=\"buyitbutton\" onclick=\"location.href='/buyit'\">Buy It</button> 
         </div>
                     
         {% endfor %}
+    {% endif %}
+    
+        
+       
    
 {% endblock %}
 ";

@@ -41,7 +41,7 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
         // line 8
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             // line 9
-            echo "        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a>
+            echo "        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a> OR <a href=\"/logout\">LOGOUT</a>
     
     ";
         }
@@ -88,7 +88,7 @@ class __TwigTemplate_f7fdffab12a33afc441559e3fb1942e2029a7f58dfcb8307ff06e93e361
 
     <h1>Login</h1>
     {% if sessionUser %}
-        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a>
+        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a> OR <a href=\"/logout\">LOGOUT</a>
     
     {% endif %}
     {% if loginFailed %}
