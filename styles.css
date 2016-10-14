@@ -153,6 +153,27 @@ input[type=submit]{
     color: grey;
     text-decoration:none;
 }
+#buyitbutton {
+    margin-left: 50px;
+    margin-top: 75px;
+    background-color: lightskyblue;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    height:25px;
+    width:100px;
+}
+#sellbutton {
+    margin-left: 50px;
+    margin-top: 85px;
+    background-color: lightskyblue;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    height:25px;
+    width:100px;
+    
+}
 #reg  a:link {
     color: grey;
     text-decoration:none;
@@ -183,7 +204,7 @@ input[type=submit]{
 #listing{
     display: inline-block;
     margin-left: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     background-color: white;
     padding: 5px;
     height:400px;
@@ -193,6 +214,7 @@ input[type=submit]{
     border-color: #ccc;
     text-align: left;
     color: #333;
+    
 }
 
 
