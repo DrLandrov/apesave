@@ -20,7 +20,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
     DB::$user = 'Rolex';
-    DB::$password = 'Fuqw4qySPrjKFnuL';
+    DB::$password = 'peterpan';
 } else {
     DB::$dbName = 'cp4724_Rolex';
     DB::$user = 'cp4724_Rolex';
@@ -74,7 +74,7 @@ $app->get('/', function() use ($app, $log) {
 
 // ======================================REGISTER ============================
 $app->get('/register', function() use ($app, $log) {
-    $app->render('register.html.twig');
+    $app->render('register.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 // State 2: submission
 $app->post('/register', function() use ($app, $log) {

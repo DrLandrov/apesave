@@ -41,26 +41,30 @@ class __TwigTemplate_0573300c835c9b8dc6c370cbc422e11aa02b5e138fb6a70b7c19663517a
         // line 8
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             // line 9
-            echo "        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a> OR <a href=\"/logout\">LOGOUT</a>
+            echo "        <p> YOU ARE ALREADY LOGGED IN! <br>
+            Would you like to <a href=\"/myaccount\">go to your account</a> OR <a href=\"/logout\">logout</a>
+    
     
     ";
-        }
-        // line 12
-        echo "    ";
-        if ((isset($context["loginFailed"]) ? $context["loginFailed"] : null)) {
-            // line 13
-            echo "        <p>Invalid username or password</p>
+        } else {
+            // line 14
+            echo "        
     ";
-        }
-        // line 15
-        echo "
+            // line 15
+            if ((isset($context["loginFailed"]) ? $context["loginFailed"] : null)) {
+                // line 16
+                echo "        <p>Invalid username or password</p>
+    ";
+            }
+            // line 18
+            echo "
     <form method=\"post\">
         Email:<br> <input type=\"text\" name=\"email\"><br>
         Password:<br> <input type=\"password\" name=\"pass\"><br>
         <input type=\"submit\" value=\"Login\">
     </form>
-
 ";
+        }
     }
 
     public function getTemplateName()
@@ -75,7 +79,7 @@ class __TwigTemplate_0573300c835c9b8dc6c370cbc422e11aa02b5e138fb6a70b7c19663517a
 
     public function getDebugInfo()
     {
-        return array (  56 => 15,  52 => 13,  49 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  60 => 18,  56 => 16,  54 => 15,  51 => 14,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -88,9 +92,12 @@ class __TwigTemplate_0573300c835c9b8dc6c370cbc422e11aa02b5e138fb6a70b7c19663517a
 
     <h1>Login</h1>
     {% if sessionUser %}
-        <p> YOU ARE ALREADY LOGGED IN! <a href=\"/myaccount\">GO TO YOUR ACCOUNT</a> OR <a href=\"/logout\">LOGOUT</a>
+        <p> YOU ARE ALREADY LOGGED IN! <br>
+            Would you like to <a href=\"/myaccount\">go to your account</a> OR <a href=\"/logout\">logout</a>
     
-    {% endif %}
+    
+    {% else %}
+        
     {% if loginFailed %}
         <p>Invalid username or password</p>
     {% endif %}
@@ -100,7 +107,7 @@ class __TwigTemplate_0573300c835c9b8dc6c370cbc422e11aa02b5e138fb6a70b7c19663517a
         Password:<br> <input type=\"password\" name=\"pass\"><br>
         <input type=\"submit\" value=\"Login\">
     </form>
-
+{% endif %}
 {% endblock %}
 ";
     }
