@@ -177,7 +177,7 @@ $app->get('/logout', function() use ($app, $log) {
 //============================PRODUCTS =================================
 $app->get('/products', function() use ($app, $log) {
     $forSaleItems = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image"
+                    "SELECT productID, pName, pPrice, pLocation, description, image"
                     . " FROM products ");
     $app->render('products.html.twig', array(
         'sessionUser' => $_SESSION['user'],
@@ -188,8 +188,8 @@ $app->get('/products', function() use ($app, $log) {
 $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
     $productID = $app->request()->post('ID');
     $forSaleItems = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image"
-                    ."FROM products"
+                    "SELECT pName, pPrice, pLocation, description, image "
+                    ."FROM products "
                     ."WHERE productID = %d", $productID);
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
