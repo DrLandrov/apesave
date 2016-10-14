@@ -66,3 +66,19 @@ Roshan
 - add Css to all the pages
 - make website header and menus
 - addproduct listing page where users and visitors can shop and browse existing products
+==========================
+Alex
+12oct
+TODO:
+-upload image to database
+-show image in cart
+-CSS
+-Buying item
+=========================
+Alex
+13oct
+TODO:
+-Session user
+-cart
+-Change content when logged in 
+-Paypal
