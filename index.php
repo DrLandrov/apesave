@@ -20,7 +20,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
     DB::$user = 'Rolex';
-    DB::$password = 'peterpan';
+    DB::$password = 'ZaNeDWQGHRx7SbcB';
 } else {
     DB::$dbName = 'cp4724_Rolex';
     DB::$user = 'cp4724_Rolex';
