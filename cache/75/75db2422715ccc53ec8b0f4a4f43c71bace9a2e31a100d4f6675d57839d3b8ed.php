@@ -37,24 +37,23 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
         // line 6
         echo "    
 <h1>Welcome to Ape Save</h1>
-";
+    ";
         // line 8
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             // line 9
-            echo "    <p>Hello ";
+            echo "        <p>Hello ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "name", array()), "html", null, true);
             echo " (";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["sessionUser"]) ? $context["sessionUser"] : null), "email", array()), "html", null, true);
             echo ").
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
-";
-        } else {
-            // line 12
-            echo "<p><div id=\"buy\"><a href=\"/sell\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
-";
+    ";
         }
-        // line 14
+        // line 12
         echo "
+<p><div id=\"buy\"><a href=\"/sell\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
+
+
 ";
     }
 
@@ -70,7 +69,7 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 
     public function getDebugInfo()
     {
-        return array (  57 => 14,  53 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  53 => 12,  44 => 9,  42 => 8,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -82,12 +81,13 @@ class __TwigTemplate_a26e97307f16c38e313839c87f742bc49c7dc31e2bd8a1d6077b8a101e8
 {% block content %}
     
 <h1>Welcome to Ape Save</h1>
-{% if sessionUser %}
-    <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
+    {% if sessionUser %}
+        <p>Hello {{sessionUser.name}} ({{sessionUser.email}}).
         <a href=\"/sell\">Click to sell</a> You may <a href=\"/logout\">logout</a>.</p>
-{% else %}
+    {% endif %}
+
 <p><div id=\"buy\"><a href=\"/sell\">BUY/SELL</a></div><div id=\"reg\"><a href=\"/register\">REGISTER</a></div><div id=\"browse\"><a href=\"/products\">BROWSE</a></div></p>
-{% endif %}
+
 
 {% endblock %}
 ";

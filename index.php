@@ -61,9 +61,6 @@ if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = array();
 }
 
-$twig = $app->view()->getEnvironment();
-$twig->addGlobal('sessionUser', $_SESSION['user']);
-
 $app->get('/', function() use ($app) {
     $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
 });
@@ -135,7 +132,7 @@ $app->post('/register', function() use ($app, $log) {
 
 // State 1: first show
 $app->get('/login', function() use ($app, $log) {
-    $app->render('login.html.twig');
+    $app->render('login.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 // State 2: submission
 $app->post('/login', function() use ($app, $log) {
@@ -179,12 +176,17 @@ $app->get('/', function() use ($app, $log) {
 });
 
 $app->get('/myaccount(/:id)', function() use ($app, $log) {
-    $myItemsForSale = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image "
-                    . "FROM products, users"
-                    . "WHERE products.userID = users.ID AND sessionID=%s", session_id());
-    $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user'],
+    if (isset($_SESSION['user']['ID'])) {
+        $myItemsForSale = DB::query(
+                        "SELECT products.userID, pName, pPrice, pLocation, description, image "
+                        . "FROM products, users "
+                        . "WHERE products.userID = users.ID AND products.userID = %s ", $_SESSION['user']['ID']);
+        $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user'],
         'myItemsForSale' => $myItemsForSale));
+    }else{
+        $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
+    }
+    
 });
 
 
@@ -199,7 +201,7 @@ $app->get('/logout', function() use ($app, $log) {
 });
 
 $app->get('/index', function() use ($app, $log) {
-    $app->render('index.html.twig');
+    $app->render('index.html.twig', array('sessionUser' => $_SESSION['user']));
 });
 
 $app->get('/contactus', function() use ($app, $log) {
@@ -210,8 +212,8 @@ $app->get('/contactus', function() use ($app, $log) {
 $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $target_dir = "upload/";
     $max_file_size = 5 * 1024 * 1024;
-    
-    
+
+
     $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
@@ -311,5 +313,5 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
   $app->render("sell.html.twig", array("v" => $ad));
   }
   });
-*/
+ */
 $app->run();

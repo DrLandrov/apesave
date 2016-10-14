@@ -5,11 +5,11 @@
 {% block content %}
     {% if sessionUser %}
         <a href="/sell">Sell</a>
-{% if adList %}
+{% if myItemsForSale %}
     
        <div id="listing">
         <ul>
-        {% for ci in forSaleItems %}
+        {% for ci in myItemsForSale %}
                 <li><img height=100 src="/upload/{{ ci.image}}"></li>
                 <li id="itemrow{{ci.ID}}"></li>
                 <li>{{ci.pName}}</li>
