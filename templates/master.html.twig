@@ -5,7 +5,19 @@
         <title>{% block title %}{% endblock %}</title>
         {% block head %}
         {% endblock %}
-        <script>
+        
+    </head>
+    <header>
+        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li>{% if sessionUser %}<a href="/logoutpage">Logout</a>{% else %}<a href="/login">Login{% endif %}</a></li><li><a href="/contactus">Contact Us</a></li><li><input type="text" name="search" placeholder="Search.."></li></ul></div>
+    </header>
+    <body>
+
+        <div id="centerContent">
+
+            <div id="content">{% block content %}{% endblock %}</div>
+
+        </div>
+            <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -22,17 +34,6 @@
             ga('send', 'pageview');
 
         </script>
-    </head>
-    <header>
-        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li>{% if sessionUser %}<a href="/logoutpage">Logout</a>{% else %}<a href="/login">Login{% endif %}</a></li><li><a href="/contactus">Contact Us</a></li><li><input type="text" name="search" placeholder="Search.."></li></ul></div>
-    </header>
-    <body>
-
-        <div id="centerContent">
-
-            <div id="content">{% block content %}{% endblock %}</div>
-
-        </div>
     </body>
     <footer id="footer">                
         &copy; Copyright 2016 by <a href="http://domain.invalid/">ApeSave</a>.
