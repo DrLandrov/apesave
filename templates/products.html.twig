@@ -7,9 +7,8 @@
          {% for ci in forSaleItems %}
            
             <div id="listing">
-            
                 {{ci.ID}}<br>
-                <div id="pimage"><a href="/buyit/{{ci.productID}}"><img height=100 src="{{ci.image}}"></a></div><br>
+                <div id="pimage"><a href="/buyit/{{ci.productID}}"><img src="{{ci.image}}"></a></div><br>
                 <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> ${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>
@@ -18,5 +17,4 @@
                 <button id="buyitbutton" onclick="location.href='/buyit/{{ci.productID}}'">Buy It</button> 
         </div>
         {% endfor %}
-   
 {% endblock %}

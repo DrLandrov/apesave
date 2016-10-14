@@ -43,7 +43,7 @@ class __TwigTemplate_9bb3ce466cebbe542015aca52e3bcbabd3fe22ca9947a5578efc5c32677
             // line 10
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
             echo "<br>
-                <div id=\"pimage\"><img height=100 src=\"";
+                <div id=\"pimage\"><img height=100 src=\"/";
             // line 11
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
             echo "\"></div><br>
@@ -102,7 +102,7 @@ class __TwigTemplate_9bb3ce466cebbe542015aca52e3bcbabd3fe22ca9947a5578efc5c32677
            
             <div id=\"listing\">
                 {{ci.ID}}<br>
-                <div id=\"pimage\"><img height=100 src=\"{{ci.image}}\"></div><br>
+                <div id=\"pimage\"><img height=100 src=\"/{{ci.image}}\"></div><br>
                 <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>

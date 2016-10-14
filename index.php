@@ -20,6 +20,7 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
     DB::$user = 'Rolex';
+    DB::$password = 'T2ADVeBStapCwTPG';
 } else {
     DB::$dbName = 'cp4724_Rolex';
     DB::$user = 'cp4724_Rolex';
@@ -190,20 +191,10 @@ $app->get('/products', function() use ($app, $log) {
 //=============================BUY IT=====================================
 
 $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
-<<<<<<< HEAD
     $itemDescription = DB::query(
                     "SELECT productID, pName, pPrice, pLocation, description, image "
                     ."FROM products "
                     ."WHERE productID = %d", $id);
-=======
-    $productID = $app->request()->post('ID');
-    $forSaleItems = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image "
-
-                    ."FROM products "
-
-                    ."WHERE productID = %d", $productID);
->>>>>>> b6a7161e9b4692680822b07aa595572edf2a20af
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'itemDescription' => $itemDescription
@@ -215,7 +206,7 @@ $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
 $app->get('/myaccount(/:id)', function() use ($app, $log) {
     if (isset($_SESSION['user']['ID'])) {
         $myItemsForSale = DB::query(
-                        "SELECT products.userID, pName, pPrice, pLocation, description, image "
+                        "SELECT products.userID, products.productID, pName, pPrice, pLocation, description, image "
                         . "FROM products, users "
                         . "WHERE products.userID = users.ID AND products.userID = %s ", $_SESSION['user']['ID']);
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user'],
@@ -223,6 +214,7 @@ $app->get('/myaccount(/:id)', function() use ($app, $log) {
     } else {
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
     }
+    
 });
 
 //=================================INDEX=========================================
