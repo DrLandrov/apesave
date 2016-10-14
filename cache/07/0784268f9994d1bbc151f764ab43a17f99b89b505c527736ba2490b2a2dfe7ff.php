@@ -40,13 +40,14 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         } else {
             echo "<a href=\"/login\">Login";
         }
-        echo "</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+        echo "</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
     </header>
     <body>
         
         <div id=\"centerContent\">
+            
             <div id=\"content\">";
-        // line 15
+        // line 16
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
             
@@ -70,7 +71,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         echo "        ";
     }
 
-    // line 15
+    // line 16
     public function block_content($context, array $blocks = array())
     {
     }
@@ -87,7 +88,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
 
     public function getDebugInfo()
     {
-        return array (  74 => 15,  70 => 7,  67 => 6,  62 => 5,  50 => 15,  38 => 10,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  75 => 16,  71 => 7,  68 => 6,  63 => 5,  51 => 16,  38 => 10,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -101,11 +102,12 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         {% endblock %}
     </head>
     <header>
-        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logout\">Logout{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logout\">Logout{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
     </header>
     <body>
         
         <div id=\"centerContent\">
+            
             <div id=\"content\">{% block content %}{% endblock %}</div>
             
         </div>
