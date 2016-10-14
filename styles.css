@@ -64,7 +64,7 @@ footer a {
 }
 input[name=search] {
     margin-right: 25px;
-    width: 250px;
+    width: 145px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -79,7 +79,7 @@ input[name=search] {
 }
 
 input[name=search]:focus {
-    width: 25%;
+    width: 100%;
 }
 form {
     text-align: left;

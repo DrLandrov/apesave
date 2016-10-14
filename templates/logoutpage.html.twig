@@ -1,0 +1,12 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Log Out{% endblock %}
+
+{% block content %}
+
+    <h1>Logout</h1>
+    {% if sessionUser %}
+        <p> Are you sure you want to logout? <br>
+        <a href="/myaccount">No</a> or <a href="/logout">Yes</a>
+{% endif %}
+{% endblock %}
