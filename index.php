@@ -134,7 +134,10 @@ $app->post('/register', function() use ($app, $log) {
         $app->render('register_success.html.twig');
     }
 });
-
+// ====================================LOGOUTPAGE===============================
+$app->get('/logoutpage', function() use ($app, $log) {
+    $app->render('logoutpage.html.twig', array('sessionUser' => $_SESSION['user']));
+});
 // ====================================LOGIN====================================
 $app->get('/login', function() use ($app, $log) {
     $app->render('login.html.twig', array('sessionUser' => $_SESSION['user']));

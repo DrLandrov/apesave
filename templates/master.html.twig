@@ -5,19 +5,36 @@
         <title>{% block title %}{% endblock %}</title>
         {% block head %}
         {% endblock %}
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-85726817-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </head>
     <header>
-        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li>{% if sessionUser %}<a href="/logout">Logout{% else %}<a href="/login">Login{% endif %}</a></li><li><a href="/contactus">Contact Us</a></li><li><input type="text" name="search" placeholder="Search.."></li></ul></div>
+        <div id="menu"><ul><li><a href="/index">Home</a></li><li><a href="/products">Shop</a></li><li><a href="/sell">Sell</a></li><li><a href="/myaccount">My Account</a></li><li>{% if sessionUser %}<a href="/logoutpage">Logout</a>{% else %}<a href="/login">Login{% endif %}</a></li><li><a href="/contactus">Contact Us</a></li><li><input type="text" name="search" placeholder="Search.."></li></ul></div>
     </header>
     <body>
-        
+
         <div id="centerContent">
-            
+
             <div id="content">{% block content %}{% endblock %}</div>
-            
+
         </div>
     </body>
     <footer id="footer">                
-                    &copy; Copyright 2016 by <a href="http://domain.invalid/">ApeSave</a>.
-            </footer>
+        &copy; Copyright 2016 by <a href="http://domain.invalid/">ApeSave</a>.
+    </footer>
 </html>

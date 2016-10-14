@@ -36,7 +36,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>";
         // line 10
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
-            echo "<a href=\"/logout\">Logout";
+            echo "<a href=\"/logoutpage\">Logout</a>";
         } else {
             echo "<a href=\"/login\">Login";
         }
@@ -102,7 +102,7 @@ class __TwigTemplate_1bbd72419c847c5ab5a692855b373a7395ba64c46bd2ce46c729d53d348
         {% endblock %}
     </head>
     <header>
-        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logout\">Logout{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logoutpage\">Logout</a>{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
     </header>
     <body>
         

@@ -45,7 +45,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
                 $context['_seq'] = twig_ensure_traversable((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null));
                 foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
                     // line 13
-                    echo "                <li><img height=100 src=\"/upload/";
+                    echo "                <li><img height=100 src=\"";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
                     echo "\"></li>
                 <li id=\"itemrow";
@@ -126,7 +126,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
        <div id=\"listing\">
         <ul>
         {% for ci in myItemsForSale %}
-                <li><img height=100 src=\"/upload/{{ ci.image}}\"></li>
+                <li><img height=100 src=\"{{ ci.image}}\"></li>
                 <li id=\"itemrow{{ci.ID}}\"></li>
                 <li>{{ci.pName}}</li>
                 <li>{{ci.pPrice}}</li>
