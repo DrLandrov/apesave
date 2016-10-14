@@ -63,7 +63,7 @@ footer a {
     background-color: #111;
 }
 input[name=search] {
-    width: 130px;
+    width: 250px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;

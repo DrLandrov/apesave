@@ -4,14 +4,15 @@
 
 {% block content %}
     
-<h1>Welcome to Ape Save</h1>
+
     {% if sessionUser %}
         <p>Hello, {{sessionUser.uName}} {{sessionUser.email}}.
-        <a href="/sell">Click to sell</a> You may <a href="/logout">logout</a>.</p>
+        
         <br>
         <p><div id="buy"><a href="/sell">SELL</a></div><div id="browse"><a href="/products">SHOP</a></div></p>
     
 {% else %}
+    <h1>Welcome to Ape Save</h1>
 <p><div id="buy"><a href="/sell">SELL</a></div><div id="reg"><a href="/register">REGISTER</a></div><div id="browse"><a href="/products">SHOP</a></div></p>
 {% endif %}
 
