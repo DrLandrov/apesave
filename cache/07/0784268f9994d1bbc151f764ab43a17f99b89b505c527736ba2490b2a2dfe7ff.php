@@ -33,7 +33,14 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         // line 8
         echo "    </head>
     <header>
-        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>";
+        // line 10
+        if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
+            echo "<a href=\"/logout\">Logout";
+        } else {
+            echo "<a href=\"/login\">Login";
+        }
+        echo "</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
@@ -73,9 +80,14 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         return "master.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  67 => 15,  63 => 7,  60 => 6,  55 => 5,  43 => 15,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  74 => 15,  70 => 7,  67 => 6,  62 => 5,  50 => 15,  38 => 10,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -89,7 +101,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         {% endblock %}
     </head>
     <header>
-        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li><a href=\"/login\">Login</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logout\">Logout{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li></ul></div><input type=\"text\" name=\"search\" placeholder=\"Search..\">
     </header>
     <body>
         
