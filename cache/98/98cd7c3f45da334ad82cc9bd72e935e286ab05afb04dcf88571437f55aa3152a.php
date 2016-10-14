@@ -31,67 +31,75 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
         echo "    ";
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
             // line 7
-            echo "        <a href=\"/sell\">Sell</a>
+            echo "       
 ";
             // line 8
             if ((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null)) {
                 // line 9
-                echo "    
-       <div id=\"listing\">
-        <ul>
-        ";
-                // line 12
+                echo "    ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable((isset($context["myItemsForSale"]) ? $context["myItemsForSale"] : null));
                 foreach ($context['_seq'] as $context["_key"] => $context["ci"]) {
-                    // line 13
-                    echo "                <li><img height=100 src=\"";
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
-                    echo "\"></li>
-                <li id=\"itemrow";
+                    // line 10
+                    echo "        <table id=\"mylisting\">
+            <tr>
+                
+        
+                <!--<li id=\"itemrow";
                     // line 14
                     echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
-                    echo "\"></li>
-                <li>";
+                    echo "\"></li>-->
+          <td>      ";
                     // line 15
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
-                    echo "</li>
-                <li>";
-                    // line 16
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
-                    echo "</li>
-                <li>";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
+                    echo "
+        </td>
+                <td><div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
                     // line 17
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
-                    echo "</li>
-                <li>";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
+                    echo "\"></a></div></td>
+                <td><center><b><u>";
                     // line 18
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
+                    echo "</u></b></center></td>
+                <td>\$";
+                    // line 19
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pPrice", array()), "html", null, true);
+                    echo "</td>
+                <td>";
+                    // line 20
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pLocation", array()), "html", null, true);
+                    echo "</td>
+                <td>";
+                    // line 21
                     echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "description", array()), "html", null, true);
-                    echo "</li>
-            </ul>
+                    echo "</td> 
+                <hr>
             ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ci'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 21
-                echo "        </div>
+                // line 24
+                echo "            <tr>
+            
+        </table>
     
     ";
             } else {
-                // line 24
+                // line 29
                 echo "        <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
 ";
             }
-            // line 26
+            // line 31
             echo "    ";
         } else {
-            // line 27
+            // line 32
             echo "        <p>Please login to access My Account</p>
         <a href=\"/login\">Login</a>
     ";
         }
-        // line 30
+        // line 35
         echo "
 
 ";
@@ -109,7 +117,7 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
 
     public function getDebugInfo()
     {
-        return array (  95 => 30,  90 => 27,  87 => 26,  83 => 24,  78 => 21,  69 => 18,  65 => 17,  61 => 16,  57 => 15,  53 => 14,  48 => 13,  44 => 12,  39 => 9,  37 => 8,  34 => 7,  31 => 6,  28 => 5,  11 => 1,);
+        return array (  103 => 35,  98 => 32,  95 => 31,  91 => 29,  84 => 24,  75 => 21,  71 => 20,  67 => 19,  63 => 18,  59 => 17,  54 => 15,  50 => 14,  44 => 10,  39 => 9,  37 => 8,  34 => 7,  31 => 6,  28 => 5,  11 => 1,);
     }
 
     public function getSource()
@@ -120,21 +128,26 @@ class __TwigTemplate_404c758a51f6b716a95d6d9ade034027165b2c3ce00b2a5af2a8cb5186e
 
 {% block content %}
     {% if sessionUser %}
-        <a href=\"/sell\">Sell</a>
+       
 {% if myItemsForSale %}
-    
-       <div id=\"listing\">
-        <ul>
-        {% for ci in myItemsForSale %}
-                <li><img height=100 src=\"{{ ci.image}}\"></li>
-                <li id=\"itemrow{{ci.ID}}\"></li>
-                <li>{{ci.pName}}</li>
-                <li>{{ci.pPrice}}</li>
-                <li>{{ci.pLocation}}</li>
-                <li>{{ci.description}}</li>
-            </ul>
+    {% for ci in myItemsForSale %}
+        <table id=\"mylisting\">
+            <tr>
+                
+        
+                <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
+          <td>      {{ci.ID}}
+        </td>
+                <td><div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"{{ci.image}}\"></a></div></td>
+                <td><center><b><u>{{ci.pName}}</u></b></center></td>
+                <td>\${{ci.pPrice}}</td>
+                <td>{{ci.pLocation}}</td>
+                <td>{{ci.description}}</td> 
+                <hr>
             {% endfor %}
-        </div>
+            <tr>
+            
+        </table>
     
     {% else %}
         <p>YOU DONT HAVE ANYTHING FOR SALE</p>   

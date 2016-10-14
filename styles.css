@@ -217,13 +217,28 @@ input[type=submit]{
     color: #333;
     
 }
-
-
-
-#pimage{
-    text-align: center;
+#mylisting {
+    width:100%;   
+    margin-left: 5px;
+    
+    background-color: white;
+    padding: 5px;
+    vertical-align: middle;
+    
+    border-color: #ccc;
+    text-align: left;
+    color: #333; 
 }
 
+hr{
+    color: lightgray;
+}
+
+
+#pimage img{
+    height: 100px;
+    width: 200px;
+}
 input[name=name], [name=image], [name=description], [name=location], [name=price]{
 
     width: 700px;

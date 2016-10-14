@@ -4,21 +4,26 @@
 
 {% block content %}
     {% if sessionUser %}
-        <a href="/sell">Sell</a>
+       
 {% if myItemsForSale %}
-    
-       <div id="listing">
-        <ul>
-        {% for ci in myItemsForSale %}
-                <li><img height=100 src="{{ ci.image}}"></li>
-                <li id="itemrow{{ci.ID}}"></li>
-                <li>{{ci.pName}}</li>
-                <li>{{ci.pPrice}}</li>
-                <li>{{ci.pLocation}}</li>
-                <li>{{ci.description}}</li>
-            </ul>
+    {% for ci in myItemsForSale %}
+        <table id="mylisting">
+            <tr>
+                
+        
+                <!--<li id="itemrow{{ci.ID}}"></li>-->
+          <td>      {{ci.ID}}
+        </td>
+                <td><div id="pimage"><a href="/buyit"><img height=100 src="{{ci.image}}"></a></div></td>
+                <td><center><b><u>{{ci.pName}}</u></b></center></td>
+                <td>${{ci.pPrice}}</td>
+                <td>{{ci.pLocation}}</td>
+                <td>{{ci.description}}</td> 
+                <hr>
             {% endfor %}
-        </div>
+            <tr>
+            
+        </table>
     
     {% else %}
         <p>YOU DONT HAVE ANYTHING FOR SALE</p>   
