@@ -31,31 +31,49 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         // line 6
         $this->displayBlock('head', $context, $blocks);
         // line 8
-        echo "    </head>
+        echo "        
+    </head>
     <header>
         <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>";
-        // line 10
+        // line 11
         if ((isset($context["sessionUser"]) ? $context["sessionUser"] : null)) {
-            echo "<a href=\"/logout\">Logout";
+            echo "<a href=\"/logoutpage\">Logout</a>";
         } else {
             echo "<a href=\"/login\">Login";
         }
         echo "</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
     </header>
     <body>
-        
+
         <div id=\"centerContent\">
-            
+
             <div id=\"content\">";
-        // line 16
+        // line 17
         $this->displayBlock('content', $context, $blocks);
         echo "</div>
-            
+
         </div>
+            <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-85726817-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </body>
     <footer id=\"footer\">                
-                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
-            </footer>
+        &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
+    </footer>
 </html>";
     }
 
@@ -71,7 +89,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         echo "        ";
     }
 
-    // line 16
+    // line 17
     public function block_content($context, array $blocks = array())
     {
     }
@@ -88,7 +106,7 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
 
     public function getDebugInfo()
     {
-        return array (  75 => 16,  71 => 7,  68 => 6,  63 => 5,  51 => 16,  38 => 10,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  93 => 17,  89 => 7,  86 => 6,  81 => 5,  52 => 17,  39 => 11,  34 => 8,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     public function getSource()
@@ -100,21 +118,39 @@ class __TwigTemplate_a7528dc639a6e387dc10cd573f3ab2725bbd9cb2ed119d6eb17d77e3b12
         <title>{% block title %}{% endblock %}</title>
         {% block head %}
         {% endblock %}
+        
     </head>
     <header>
-        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logout\">Logout{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
+        <div id=\"menu\"><ul><li><a href=\"/index\">Home</a></li><li><a href=\"/products\">Shop</a></li><li><a href=\"/sell\">Sell</a></li><li><a href=\"/myaccount\">My Account</a></li><li>{% if sessionUser %}<a href=\"/logoutpage\">Logout</a>{% else %}<a href=\"/login\">Login{% endif %}</a></li><li><a href=\"/contactus\">Contact Us</a></li><li><input type=\"text\" name=\"search\" placeholder=\"Search..\"></li></ul></div>
     </header>
     <body>
-        
+
         <div id=\"centerContent\">
-            
+
             <div id=\"content\">{% block content %}{% endblock %}</div>
-            
+
         </div>
+            <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-85726817-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </body>
     <footer id=\"footer\">                
-                    &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
-            </footer>
+        &copy; Copyright 2016 by <a href=\"http://domain.invalid/\">ApeSave</a>.
+    </footer>
 </html>";
     }
 }

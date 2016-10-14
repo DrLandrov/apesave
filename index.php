@@ -180,26 +180,29 @@ $app->get('/logout', function() use ($app, $log) {
 //============================PRODUCTS =================================
 $app->get('/products', function() use ($app, $log) {
     $forSaleItems = DB::query(
-                    "SELECT productID, pName, pPrice, pLocation, description, image"
-                    . " FROM products ");
+                    "SELECT productID, pName, pPrice, pLocation, description, image "
+                    ."FROM products ");
     $app->render('products.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'forSaleItems' => $forSaleItems
     ));
 });
+
 //=============================BUY IT=====================================
+
 $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
-    $productID = $app->request()->post('ID');
-    $forSaleItems = DB::query(
-                    "SELECT pName, pPrice, pLocation, description, image "
+    $itemDescription = DB::query(
+                    "SELECT productID, pName, pPrice, pLocation, description, image "
                     ."FROM products "
-                    ."WHERE productID = %d", $productID);
+                    ."WHERE productID = %d", $id);
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
-        'forSaleItems' => $forSaleItems
+        'itemDescription' => $itemDescription
     ));
 });
+
 //=============================MY ACCOUNT ================================
+
 $app->get('/myaccount(/:id)', function() use ($app, $log) {
     if (isset($_SESSION['user']['ID'])) {
         $myItemsForSale = DB::query(
