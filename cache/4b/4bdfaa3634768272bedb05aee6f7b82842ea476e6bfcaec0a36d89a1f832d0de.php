@@ -60,10 +60,10 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
             // line 18
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "ID", array()), "html", null, true);
             echo "<br>
-                <div id=\"pimage\"><img height=100 src=\"/upload/";
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"";
             // line 19
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "image", array()), "html", null, true);
-            echo "\"></div><br>
+            echo "\"></a></div><br>
                 <center><b><u>";
             // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["ci"], "pName", array()), "html", null, true);
@@ -127,7 +127,7 @@ class __TwigTemplate_3f9482da578cf84afffa00c9d4dc79a00391160009b7775c7adb885668e
             
                 <!--<li id=\"itemrow{{ci.ID}}\"></li>-->
                 {{ci.ID}}<br>
-                <div id=\"pimage\"><img height=100 src=\"/upload/{{ci.image}}\"></div><br>
+                <div id=\"pimage\"><a href=\"/buyit\"><img height=100 src=\"{{ci.image}}\"></a></div><br>
                 <center><b><u>{{ci.pName}}</u></b></center><br>
                 Price:<b> \${{ci.pPrice}}</b><br>
                 Item Location: {{ci.pLocation}}<br>

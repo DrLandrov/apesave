@@ -16,9 +16,15 @@ $log->pushHandler(new StreamHandler('logs/everything.log', Logger::DEBUG));
 $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 //DB CONNECTION
-DB::$dbName = 'rolex';
-DB::$user = 'Rolex';
-DB::$password = 'Fuqw4qySPrjKFnuL';
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    DB::$dbName = 'rolex';
+    DB::$user = 'Rolex';
+    DB::$password = 'Fuqw4qySPrjKFnuL';
+} else {
+    DB::$dbName = 'cp4724_Rolex';
+    DB::$user = 'cp4724_Rolex';
+    DB::$password = '(37&AdUlX%DT';
+}
 // DB::$host = '127.0.0.1'; // sometimes needed on Mac OSX
 DB::$error_handler = 'sql_error_handler';
 DB::$nonsql_error_handler = 'nonsql_error_handler';
@@ -37,7 +43,7 @@ function sql_error_handler($params) {
     $log->error(" in query: " . $params['query']);
     http_response_code(500);
     $app->render('error_internal.html.twig');
-    die; 
+    die;
 }
 
 $app = new \Slim\Slim(array(
@@ -111,7 +117,7 @@ $app->post('/register', function() use ($app, $log) {
       array_push($errorList, "Passwords don't match");
       }
      */
-   
+
     if ($errorList) {
         // STATE 3: submission failed        
         $app->render('register.html.twig', array(
@@ -218,11 +224,9 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $description = $app->request->post('description');
     $price = $app->request->post('price');
     $location = $app->request->post('location');
-    $pName = $app->request->post('pName');
-    $fileUpload = $app->request->post('image'); //TO BE CHECK
-    $_FILES['image'] = $fileUpload;
-
+    $pName = $app->request->post('name');
     $errorList = array();
+    
     if (!isset($_FILES['image'])) {
         // not receiving an upload of file - error!
         array_push($errorList, "You must select a picture for upload");
@@ -251,9 +255,8 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
 
     if (($price == "") || !is_numeric($price) || ($price < 0) || ($price > 1000000)) {
         array_push($errorList, "Price must be provided and between 0 and 1000000");
-        unset($valueList['price']);
     }
-    if (strlen($pName) <2 || strlen($pName)> 30){
+    if (strlen($pName) < 2 || strlen($pName) > 30) {
         array_push($errorList, "Name of the product must be at least 2 character and 30 character max");
     }
 

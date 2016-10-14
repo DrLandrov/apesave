@@ -12,14 +12,14 @@
             </ul>
         {% endif %}
 
-        <form  method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <!--No Post get for image in index file-->
             <h1>Sell Item</h1>
-            Product Name:<br> <input type="text" name="pName"><br>
+            Product Name:<br> <input type="text" name="name"value="{{v.pName}}"><br>
             Image:<br> <input type="file" name="image"><br> 
             Description:<br> <textarea cols="20" rows="4" name="description">{{v.description}}</textarea><br>
-            Price:<br> <input type="text" name="price" value="{{v.price}}"><br>
-            Location:<br> <input type="text" name ="location" value="{{v.location}}"><br>
+            Price:<br> <input type="text" name="price" value="{{v.pPrice}}"><br>
+            Location:<br> <input type="text" name ="location" value="{{v.pLocation}}"><br>
             <input type="submit" value="sell">
         </form>
     {% else %}

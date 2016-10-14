@@ -199,11 +199,9 @@ input[type=submit]{
 
 #pimage{
     text-align: center;
-    
-    
 }
 
-input[name=pName], [name=image], [name=description], [name=location], [name=price]{
+input[name=name], [name=image], [name=description], [name=location], [name=price]{
 
     width: 700px;
     padding: 12px 20px;

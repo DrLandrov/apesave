@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2016 at 05:50 PM
+-- Generation Time: Oct 14, 2016 at 04:29 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -74,6 +74,7 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `products` (
   `productID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `pName` varchar(100) NOT NULL,
   `pPrice` decimal(30,0) NOT NULL,
   `pLocation` varchar(100) NOT NULL,
@@ -85,12 +86,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`productID`, `pName`, `pPrice`, `pLocation`, `description`, `image`) VALUES
-(3, '', '122', 'canada', 'sadsaf', ''),
-(4, 'Alex', '122', 'canada', 'yayyyyy', ''),
-(5, '', '34', '', 'fadgag', ''),
-(6, 'ALEX', '1000', 'CANADA', 'LOL', 'Desert.jpg'),
-(7, 'RoSH', '10000', 'states', 'A very nice rosh', 'Penguins.jpg');
+INSERT INTO `products` (`productID`, `userID`, `pName`, `pPrice`, `pLocation`, `description`, `image`) VALUES
+(20, 1, 'sgh', '0', 'sghs', 'ghsgh', 'sgh'),
+(22, 1, 'djhdhj', '45', 'hshsfh', 'sghsfgh', 'sf'),
+(23, 1, 'fsghjs', '34', 'sghsfh', 'sghsghs', 'upload/80c049440a89da6c86bba551d7335c3d.jpeg'),
+(24, 1, 'djsdfhj', '45', 'ghshs', 'sghsghgs', 'upload/315b2947fd9a63a70f1c5051cc8e9ece.jpeg');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `firstName`, `lastName`, `birthDate`, `email`, `password`, `phone`, `cartID`, `username`) VALUES
 (1, 'alex', 'landry', '0000-00-00', 'al@hotmail.ca', 'canada', 0, 0, 'alex'),
-(2, 'alex', 'landry', '0000-00-00', 'ownpurrange3@hotmail.ca', 'canada', 0, 0, 'Alex');
+(3, 'rosh', 'landry', '0000-00-00', 'allo@hotmail.ca', 'canada', 0, 0, 'rosh');
 
 --
 -- Indexes for dumped tables
@@ -147,14 +147,18 @@ ALTER TABLE `categories`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`productID`);
+  ADD PRIMARY KEY (`productID`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `userID_2` (`userID`),
+  ADD KEY `userID_3` (`userID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `email` (`email`,`cartID`);
+  ADD UNIQUE KEY `email` (`email`,`cartID`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -179,27 +183,27 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `bid`
---
-ALTER TABLE `bid`
-  ADD CONSTRAINT `bid_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `products` (`productID`);
 
 --
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
