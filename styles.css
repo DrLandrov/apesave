@@ -216,6 +216,58 @@ input[type=submit]{
     color: #333;
     
 }
+
+#productdetail{
+    
+    margin-left: 5px;
+    margin-right:5px;
+    margin-top: 10px;
+    background-color: white;
+    padding: 5px;
+    height:400px;
+    
+    vertical-align: middle;
+    border: solid 1px;
+    border-color: #ccc;
+    text-align: left;
+    color: #333;
+    
+}
+#pdimage img{
+    float:left;
+    height:200px;
+    width: 200px;
+    margin: 0 auto;
+    
+}
+#pinfo{
+    
+    display: inline-block;
+    margin: 0 auto;
+    margin-left: 5px;
+    background-color: white;
+    border: solid 1px;
+    border-color: #ccc;
+    width:665px;
+    height:199px;
+    color: #333;
+}
+#description{
+    
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 5px;
+    background-color: white;
+    border: solid 1px;
+    border-color: #ccc;
+    width:870px;
+    
+    color: #333;
+}
+
+#paypal{
+    margin-bottom: 5px;
+}
 #mylisting {
     width:100%;   
     margin-left: 5px;

@@ -82,7 +82,14 @@ TODO:
 -cart
 -Change content when logged in 
 -Paypal
+============================
+Roshan
+13 Oct
+- add Css to all the pages
+- make separate pages for logged in users
+- add product description page when product is sliced on in product listing page
 ==========================
+
 Alex
 14oct 
 TODO:
@@ -92,4 +99,11 @@ TODO:
 -BID
 -total
 -paypal
+
+============================
+Roshan
+14 Oct
+- add Css to all the pages
+- change layout of my account page and display users posts and and link to product description page.
+==========================
 
