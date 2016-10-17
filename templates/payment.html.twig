@@ -1,0 +1,16 @@
+{% extends "master.html.twig" %}
+
+{% block content %}
+
+    {% for ci in itemDescription %}
+
+        <div id="listing">
+            {{ci.ID}}<br>
+            <div id="pimage"><img height=100 src="/{{ci.image}}"></div><br>
+            <br>
+            
+
+        </div>
+    {% endfor %}
+
+{% endblock %}

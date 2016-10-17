@@ -85,7 +85,8 @@ form {
     color: grey;
 
 }
-input[name=uName], [name=fName], [name=lName], [name=email], [name=pass], [name=pass1], [name=pass2]  {
+input[name=uName], [name=fName], [name=lName], [name=email], [name=pass],
+[name=pass1], [name=pass2], [name=comment]  {
 
     width: 700px;
     padding: 12px 20px;

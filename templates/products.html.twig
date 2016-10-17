@@ -1,9 +1,6 @@
 {% extends "master.html.twig" %}
 
 {% block content %}
-    
-        <a href="/register">Register</a>
-        <a href="/login">Login</a><br>
          {% for ci in forSaleItems %}
            
             <div id="listing">
@@ -14,6 +11,7 @@
                 Item Location: {{ci.pLocation}}<br>
                 Description: {{ci.description}}<br>
                 <br>
+                
                 <button id="buyitbutton" onclick="location.href='/buyit/{{ci.productID}}'">Buy It</button> 
         </div>
         {% endfor %}

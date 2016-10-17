@@ -19,8 +19,8 @@ $log->pushHandler(new StreamHandler('logs/errors.log', Logger::ERROR));
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     DB::$dbName = 'rolex';
-    DB::$user = 'Rolex';
-    DB::$password = 'T2ADVeBStapCwTPG';
+    DB::$user = 'rolex';
+    DB::$password = 'ZxeZ9xXcT7yWMAY5';
 } else {
     DB::$dbName = 'cp4724_Rolex';
     DB::$user = 'cp4724_Rolex';
@@ -73,6 +73,7 @@ $app->get('/', function() use ($app, $log) {
 });
 
 // ======================================REGISTER ============================
+
 $app->get('/register', function() use ($app, $log) {
     $app->render('register.html.twig', array('sessionUser' => $_SESSION['user']));
 });
@@ -134,11 +135,16 @@ $app->post('/register', function() use ($app, $log) {
         $app->render('register_success.html.twig');
     }
 });
+
 // ====================================LOGOUTPAGE===============================
+
 $app->get('/logoutpage', function() use ($app, $log) {
     $app->render('logoutpage.html.twig', array('sessionUser' => $_SESSION['user']));
 });
+ 
+
 // ====================================LOGIN====================================
+
 $app->get('/login', function() use ($app, $log) {
     $app->render('login.html.twig', array('sessionUser' => $_SESSION['user']));
 });
@@ -181,7 +187,7 @@ $app->get('/logout', function() use ($app, $log) {
 $app->get('/products', function() use ($app, $log) {
     $forSaleItems = DB::query(
                     "SELECT productID, pName, pPrice, pLocation, description, image "
-                    ."FROM products ");
+                    . "FROM products ");
     $app->render('products.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'forSaleItems' => $forSaleItems
@@ -193,13 +199,25 @@ $app->get('/products', function() use ($app, $log) {
 $app->get('/buyit(/:id)', function($id = '') use ($app, $log) {
     $itemDescription = DB::query(
                     "SELECT productID, pName, pPrice, pLocation, description, image "
-                    ."FROM products "
-                    ."WHERE productID = %d", $id);
+                    . "FROM products "
+                    . "WHERE productID = %d", $id);
     $app->render('buyit.html.twig', array(
         'sessionUser' => $_SESSION['user'],
         'itemDescription' => $itemDescription
     ));
 });
+
+$app->get('/payment(/:id)', function($id = '') use ($app, $log) {
+    $itemDescription = DB::query(
+                    "SELECT productID, pName, pPrice, pLocation, description, image "
+                    . "FROM products "
+                    . "WHERE productID = %d", $id);
+    $app->render('payment.html.twig', array(
+        'sessionUser' => $_SESSION['user'],
+        'itemDescription' => $itemDescription
+    ));
+});
+
 
 //=============================MY ACCOUNT ================================
 
@@ -214,7 +232,6 @@ $app->get('/myaccount(/:id)', function() use ($app, $log) {
     } else {
         $app->render('myaccount.html.twig', array('sessionUser' => $_SESSION['user']));
     }
-    
 });
 
 //=================================INDEX=========================================
@@ -227,6 +244,28 @@ $app->get('/index', function() use ($app, $log) {
 
 $app->get('/contactus', function() use ($app, $log) {
     $app->render('contactus.html.twig', array('sessionUser' => $_SESSION['user']));
+});
+
+$app->post('/contactus', function() use ($app, $log) {
+    $email = $app->request->post('email');
+    $lName = $app->request->post('lName');
+    $fName = $app->request->post('fName');
+    $comment = $app->request->post('comment');
+    $emailus = "ownpurrange3@hotmail.ca";
+
+    $html = $app->view()->render('emailus.html.twig', array(
+        'email' => $email,
+        'lName' => $lName,
+        'fName' => $fName,
+        'comment' => $comment
+    ));
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers.= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers.= "From: " . htmlentities($fName) . " <" . $email . ">\r\n";
+    $headers.= "To:<ownpurrange3@hotmail.ca>\r\n";
+    
+
+    mail($emailus, "Comment from a user", $html, $headers);
 });
 
 // =======================POSTING ITEM ============================
@@ -245,7 +284,7 @@ $app->post('/sell(/:id)', function($id = '') use ($app, $log) {
     $location = $app->request->post('location');
     $pName = $app->request->post('name');
     $errorList = array();
-    
+
     if (!isset($_FILES['image'])) {
         // not receiving an upload of file - error!
         array_push($errorList, "You must select a picture for upload");
